@@ -1,5 +1,0 @@
-bandit/bandit1.o: bandit/bandit1.cc bandit/bandit.ih bandit/bandit.h
-
-bandit/bandit.ih:
-
-bandit/bandit.h:

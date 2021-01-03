@@ -1,5 +1,0 @@
-cell/cell2.o: cell/cell2.cc cell/cell.ih cell/cell.h
-
-cell/cell.ih:
-
-cell/cell.h:

@@ -1,6 +1,0 @@
-bandit/updateQvalue.o: bandit/updateQvalue.cc bandit/bandit.ih \
- bandit/bandit.h
-
-bandit/bandit.ih:
-
-bandit/bandit.h:

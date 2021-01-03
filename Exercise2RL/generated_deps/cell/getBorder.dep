@@ -1,5 +1,0 @@
-cell/getBorder.o: cell/getBorder.cc cell/cell.ih cell/cell.h
-
-cell/cell.ih:
-
-cell/cell.h:
