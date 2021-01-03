@@ -1,7 +1,0 @@
-"main.cc" -> "main.o" [label = "compile"]
-"trash/maze/initMaze.cc" -> "trash/maze/initMaze.o" [label = "compile"]
-"main.cc" -> "main.o" [label = "compile"]
-"trash/maze/initMaze.cc" -> "trash/maze/initMaze.o" [label = "compile"]
-"trash/maze/maze.ih" -> "trash/maze/initMaze.o" [label = "compile"]
-"trash/maze/maze.h" -> "trash/maze/initMaze.o" [label = "compile"]
-"trash/maze/../cell/cell.h" -> "trash/maze/initMaze.o" [label = "compile"]

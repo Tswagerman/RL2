@@ -1,8 +1,0 @@
-trash/maze/initMaze.o: trash/maze/initMaze.cc trash/maze/maze.ih \
- trash/maze/maze.h trash/maze/../cell/cell.h
-
-trash/maze/maze.ih:
-
-trash/maze/maze.h:
-
-trash/maze/../cell/cell.h:
