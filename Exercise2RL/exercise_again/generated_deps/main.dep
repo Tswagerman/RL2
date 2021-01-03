@@ -1,0 +1,15 @@
+main.o: main.cc cell/cell.ih cell/cell.h mazesolver/mazesolver.ih \
+ mazesolver/mazesolver.h mazesolver/../cell/cell.ih \
+ mazesolver/../cell/cell.h
+
+cell/cell.ih:
+
+cell/cell.h:
+
+mazesolver/mazesolver.ih:
+
+mazesolver/mazesolver.h:
+
+mazesolver/../cell/cell.ih:
+
+mazesolver/../cell/cell.h:

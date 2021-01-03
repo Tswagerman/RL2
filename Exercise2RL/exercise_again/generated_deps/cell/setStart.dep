@@ -1,0 +1,5 @@
+cell/setStart.o: cell/setStart.cc cell/cell.ih cell/cell.h
+
+cell/cell.ih:
+
+cell/cell.h:

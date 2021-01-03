@@ -1,0 +1,11 @@
+mazesolver/mazesolver2.o: mazesolver/mazesolver2.cc \
+ mazesolver/mazesolver.ih mazesolver/mazesolver.h \
+ mazesolver/../cell/cell.ih mazesolver/../cell/cell.h
+
+mazesolver/mazesolver.ih:
+
+mazesolver/mazesolver.h:
+
+mazesolver/../cell/cell.ih:
+
+mazesolver/../cell/cell.h:

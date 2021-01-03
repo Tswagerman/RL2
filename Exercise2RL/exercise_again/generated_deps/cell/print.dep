@@ -1,0 +1,5 @@
+cell/print.o: cell/print.cc cell/cell.ih cell/cell.h
+
+cell/cell.ih:
+
+cell/cell.h:
