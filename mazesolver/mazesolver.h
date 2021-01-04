@@ -4,6 +4,8 @@
 
 class mazeSolver
 {
+    size_t d_x;
+    size_t d_y;
     cell d_currentCell;
     public:
         mazeSolver();

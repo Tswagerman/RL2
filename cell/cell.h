@@ -12,10 +12,13 @@ class cell
     bool d_border;
     bool d_start;
 
-    float* d_directionProbability;
+    float *d_QValue;
     public:
         cell();
         cell(size_t width, size_t height, char character);
+        cell(const cell& other);
+        cell(cell&& tmp);
+        cell &operator=(cell const &tmp);
         ~cell();
         
         size_t getWidth() const;
@@ -23,6 +26,8 @@ class cell
         float getReward() const;
         bool getStart() const;
         bool getBorder() const;
+
+        void swap(cell &other);
 
         void print() const;
 

@@ -3,4 +3,5 @@
 
 mazeSolver::~mazeSolver()
 {
+    cout << "MazeSolver Destroyed!" << endl;
 }
