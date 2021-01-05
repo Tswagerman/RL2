@@ -1,0 +1,5 @@
+cell/getQValue.o: cell/getQValue.cc cell/cell.ih cell/cell.h
+
+cell/cell.ih:
+
+cell/cell.h:

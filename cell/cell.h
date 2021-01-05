@@ -4,6 +4,8 @@
 #include <cstddef>
 #include <vector>
 
+#define SIZE 4
+
 class cell
 {
     size_t d_x;
@@ -16,8 +18,8 @@ class cell
     public:
         cell();
         cell(size_t width, size_t height, char character);
-        cell(const cell& other);
-        cell(cell&& tmp);
+        cell(const cell& other);    //copy
+        cell(cell&& tmp);   //move
         cell &operator=(cell const &tmp);
         ~cell();
         
@@ -26,8 +28,9 @@ class cell
         float getReward() const;
         bool getStart() const;
         bool getBorder() const;
+        float* getQValue() const;
 
-        void swap(cell &other);
+        void setQValue(float* newQValue);
 
         void print() const;
 
@@ -36,6 +39,8 @@ class cell
         void setHeight(size_t newHeight); 
         void setStart(bool status);
         void setBorder(bool status);
+        
+        void swap(cell &other);
 };
         
 #endif

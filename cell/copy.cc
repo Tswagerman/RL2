@@ -4,7 +4,7 @@
 cell::cell(const cell& other)
 //:
 {
-    cout << "Copied!" << endl;
+    //cout << "Copied!" << endl;
     d_x = other.d_x;
     d_y = other.d_y;
     d_reward = other.d_reward;

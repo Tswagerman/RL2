@@ -5,13 +5,8 @@ cell::cell(size_t width, size_t height, char character)
   :d_x(width),
     d_y(height)
 {
-    //cout << "Cell Created!" << endl;
-    d_QValue = new float[4]; //Default q values for four directions
-    for(size_t inc = 0; inc < 4; ++inc)
-    {
-        d_QValue[4] = { 0 };
-        //cout << "Q value 0 = " << d_QValue[0] << endl;
-    }    
+    d_QValue = new float[SIZE]; //Default q values for four directions
+    memset(d_QValue, 0.0, sizeof(float) * SIZE);
     setStart(false);
     setBorder(false);
     if ((character == '_') | (character == '|'))
