@@ -5,10 +5,13 @@ cell::cell(size_t width, size_t height, char character)
   :d_x(width),
     d_y(height)
 {
+    //cout << "Cell Created!" << endl;
     d_QValue = new float[SIZE]; //Default q values for four directions
-    memset(d_QValue, 0.0, sizeof(float) * SIZE);
+    memset(d_QValue, 0, sizeof(float) * SIZE); //memset can be used to set array to 0
     setStart(false);
     setBorder(false);
+    d_count = 0;
+    d_averageReward = 0;
     if ((character == '_') | (character == '|'))
     {
         setBorder(true);
@@ -18,7 +21,6 @@ cell::cell(size_t width, size_t height, char character)
     {
         d_reward = 0;
         setStart(true);
-        setBorder(true);
     }    
     else if (character == 'T')
         d_reward = -20; //Traps are present

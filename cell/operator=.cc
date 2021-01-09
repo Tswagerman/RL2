@@ -4,7 +4,7 @@
 cell &cell::operator=(cell const &other)
 //:
 {
-    //cout << "=operator" << endl;
+    cout << "=operator" << endl;
     cell tmp(other);
     swap(tmp);
     return *this;

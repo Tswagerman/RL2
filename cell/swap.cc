@@ -8,6 +8,6 @@ void cell::swap(cell &other)
     d_reward = other.d_reward;
     d_border = other.d_border;
     d_start = other.d_start;
-    d_QValue = new float[4];
-    memcpy(d_QValue, other.d_QValue, 4);
+    d_QValue = new float[SIZE];
+    memcpy(d_QValue, other.d_QValue, sizeof(float) * SIZE);
 }

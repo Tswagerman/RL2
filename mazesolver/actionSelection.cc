@@ -2,16 +2,11 @@
 #include "mazesolver.ih"
 
 int mazeSolver::actionSelection()
-{
+{   
+    getMaxQValue(); 
     int action;
-    float max = d_QValue[0];
-    size_t idx;
-    for (idx = 0; idx < SIZE; ++idx)
-    {
-        if (d_QValue[idx] > max)
-            max = d_QValue[idx];
-    }
-    switch(idx)
+    //cout << "ACTION SELECTED: " << d_actionSelection << endl;
+    switch(d_actionSelection)
     {
         case(0):
             action = -d_height; //North
@@ -26,6 +21,7 @@ int mazeSolver::actionSelection()
             action = -1; //West
             break;
     }
+    //cout << "actionSelected = " << actionSelected << " | action = " << action << endl;
     return action;
 }
 

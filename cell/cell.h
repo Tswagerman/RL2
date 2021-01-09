@@ -10,7 +10,9 @@ class cell
 {
     size_t d_x;
     size_t d_y;
+    size_t d_count;
     float d_reward;
+    float d_averageReward;
     bool d_border;
     bool d_start;
 
@@ -26,6 +28,7 @@ class cell
         size_t getWidth() const;
         size_t getHeight() const;
         float getReward() const;
+        float getAverageReward() const;
         bool getStart() const;
         bool getBorder() const;
         float* getQValue() const;
@@ -39,7 +42,8 @@ class cell
         void setHeight(size_t newHeight); 
         void setStart(bool status);
         void setBorder(bool status);
-        
+        float setAverageReward(int newAverageReward);
+
         void swap(cell &other);
 };
         

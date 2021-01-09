@@ -13,7 +13,7 @@ cell::cell(cell&& tmp)
     tmp.d_x = 0;
     tmp.d_y = 0;
     tmp.d_reward = 0;
-    tmp.d_border = false;
-    tmp.d_start = false;
+    tmp.d_border = NULL;
+    tmp.d_start = NULL;
     tmp.d_QValue = nullptr;
 }

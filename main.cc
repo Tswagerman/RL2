@@ -41,8 +41,8 @@ size_t getStartPos(std::vector<cell> mazeGrid, size_t size)
 int main()
 {
     const char* maze[12] = {
-        "_S_________",
-        "| |     |G|",
+        "___________",
+        "|S|     |G|",
         "| |  |  | |",
         "| |  | _| |",
         "|  _ |   _|",

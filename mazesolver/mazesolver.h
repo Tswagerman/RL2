@@ -9,10 +9,10 @@ class mazeSolver
     size_t d_height;
     size_t d_width;
     size_t d_idxCell;
-    int d_action;
+    int d_actionSelection;
     size_t d_runs;
     size_t d_steps;
-    float* d_QValue;
+    float* m_QValue;
     cell d_currentCell;
     public:
         mazeSolver();
@@ -22,6 +22,8 @@ class mazeSolver
     private:
         void runMaze(vector<cell> &mazeGrid);
         int actionSelection();
+        float actionValueFunc(std::vector<cell> const &input, int action, float discountRate, int step, float reward);
+        void getMaxQValue();
 };
         
 #endif

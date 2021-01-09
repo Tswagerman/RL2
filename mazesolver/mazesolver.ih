@@ -1,5 +1,5 @@
 #include "mazesolver.h"
-
+#include <random>
 
 using namespace std;
 
