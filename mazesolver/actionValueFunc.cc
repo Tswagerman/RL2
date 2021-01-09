@@ -16,3 +16,4 @@ float mazeSolver::actionValueFunc(std::vector<cell> const &mazeGrid, int action,
     reward += nextCell.getReward() * pow(discountRate, step);
     return actionValueFunc(mazeGrid, action, discountRate, step + 1, reward);
 }
+
