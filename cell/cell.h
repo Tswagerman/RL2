@@ -15,7 +15,7 @@ class cell
     float d_averageReward;
     bool d_border;
     bool d_start;
-
+    char d_character;
     float *d_QValue;
     public:
         cell();

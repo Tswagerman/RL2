@@ -4,5 +4,5 @@
 mazeSolver::~mazeSolver()
 {
     cout << "MazeSolver Destroyed!" << endl;
-    //delete[] m_QValue;
+    //delete m_QValue;
 }

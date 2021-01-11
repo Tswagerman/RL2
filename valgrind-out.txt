@@ -1,378 +1,638 @@
-==106892== Memcheck, a memory error detector
-==106892== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==106892== Using Valgrind-3.15.0-608cb11914-20190413 and LibVEX; rerun with -h for copyright info
-==106892== Command: ./main
-==106892== Parent PID: 24685
-==106892== 
---106892-- 
---106892-- Valgrind options:
---106892--    --leak-check=full
---106892--    --show-leak-kinds=all
---106892--    --track-origins=yes
---106892--    --verbose
---106892--    --log-file=valgrind-out.txt
---106892-- Contents of /proc/version:
---106892--   Linux version 5.4.0-58-generic (buildd@lcy01-amd64-004) (gcc version 9.3.0 (Ubuntu 9.3.0-17ubuntu1~20.04)) #64-Ubuntu SMP Wed Dec 9 08:16:25 UTC 2020
---106892-- 
---106892-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-ssse3-avx-avx2-rdrand
---106892-- Page sizes: currently 4096, max supported 4096
---106892-- Valgrind library directory: /usr/lib/x86_64-linux-gnu/valgrind
---106892-- Reading syms from /home/thomas/git/Exercise2RL/main/main
---106892-- Reading syms from /usr/lib/x86_64-linux-gnu/ld-2.31.so
---106892--   Considering /usr/lib/x86_64-linux-gnu/ld-2.31.so ..
---106892--   .. CRC mismatch (computed 6cded93a wanted 1af57820)
---106892--   Considering /lib/x86_64-linux-gnu/ld-2.31.so ..
---106892--   .. CRC mismatch (computed 6cded93a wanted 1af57820)
---106892--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/ld-2.31.so ..
---106892--   .. CRC is valid
---106892-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/memcheck-amd64-linux
---106892--    object doesn't have a symbol table
---106892--    object doesn't have a dynamic symbol table
---106892-- Scheduler: using generic scheduler lock implementation.
---106892-- Reading suppressions file: /usr/lib/x86_64-linux-gnu/valgrind/default.supp
-==106892== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-106892-by-thomas-on-???
-==106892== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-106892-by-thomas-on-???
-==106892== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-106892-by-thomas-on-???
-==106892== 
-==106892== TO CONTROL THIS PROCESS USING vgdb (which you probably
-==106892== don't want to do, unless you know exactly what you're doing,
-==106892== or are doing some strange experiment):
-==106892==   /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=106892 ...command...
-==106892== 
-==106892== TO DEBUG THIS PROCESS USING GDB: start GDB like this
-==106892==   /path/to/gdb ./main
-==106892== and then give GDB the following command
-==106892==   target remote | /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=106892
-==106892== --pid is optional if only one valgrind process is running
-==106892== 
---106892-- REDIR: 0x4022d80 (ld-linux-x86-64.so.2:strlen) redirected to 0x580c9ce2 (???)
---106892-- REDIR: 0x4022b50 (ld-linux-x86-64.so.2:index) redirected to 0x580c9cfc (???)
---106892-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_core-amd64-linux.so
---106892--    object doesn't have a symbol table
---106892-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so
---106892--    object doesn't have a symbol table
-==106892== WARNING: new redirection conflicts with existing -- ignoring it
---106892--     old: 0x04022d80 (strlen              ) R-> (0000.0) 0x580c9ce2 ???
---106892--     new: 0x04022d80 (strlen              ) R-> (2007.0) 0x0483f060 strlen
---106892-- REDIR: 0x401f560 (ld-linux-x86-64.so.2:strcmp) redirected to 0x483ffd0 (strcmp)
---106892-- REDIR: 0x40232e0 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4843a20 (mempcpy)
---106892-- Reading syms from /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28
---106892--    object doesn't have a symbol table
---106892-- Reading syms from /usr/lib/x86_64-linux-gnu/libgcc_s.so.1
---106892--    object doesn't have a symbol table
---106892-- Reading syms from /usr/lib/x86_64-linux-gnu/libc-2.31.so
---106892--   Considering /usr/lib/x86_64-linux-gnu/libc-2.31.so ..
---106892--   .. CRC mismatch (computed cd1655d1 wanted 09373696)
---106892--   Considering /lib/x86_64-linux-gnu/libc-2.31.so ..
---106892--   .. CRC mismatch (computed cd1655d1 wanted 09373696)
---106892--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libc-2.31.so ..
---106892--   .. CRC is valid
---106892-- Reading syms from /usr/lib/x86_64-linux-gnu/libm-2.31.so
---106892--   Considering /usr/lib/x86_64-linux-gnu/libm-2.31.so ..
---106892--   .. CRC mismatch (computed b88da5c9 wanted 1658d783)
---106892--   Considering /lib/x86_64-linux-gnu/libm-2.31.so ..
---106892--   .. CRC mismatch (computed b88da5c9 wanted 1658d783)
---106892--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libm-2.31.so ..
---106892--   .. CRC is valid
---106892-- REDIR: 0x4afc600 (libc.so.6:memmove) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---106892-- REDIR: 0x4afb900 (libc.so.6:strncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---106892-- REDIR: 0x4afc930 (libc.so.6:strcasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---106892-- REDIR: 0x4afb220 (libc.so.6:strcat) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---106892-- REDIR: 0x4afb960 (libc.so.6:rindex) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---106892-- REDIR: 0x4afddd0 (libc.so.6:rawmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---106892-- REDIR: 0x4b18e60 (libc.so.6:wmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---106892-- REDIR: 0x4b189a0 (libc.so.6:wcscmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---106892-- REDIR: 0x4afc760 (libc.so.6:mempcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---106892-- REDIR: 0x4afc590 (libc.so.6:bcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---106892-- REDIR: 0x4afb890 (libc.so.6:strncmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---106892-- REDIR: 0x4afb2d0 (libc.so.6:strcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---106892-- REDIR: 0x4afc6c0 (libc.so.6:memset) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---106892-- REDIR: 0x4b18960 (libc.so.6:wcschr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---106892-- REDIR: 0x4afb7f0 (libc.so.6:strnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---106892-- REDIR: 0x4afb3b0 (libc.so.6:strcspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---106892-- REDIR: 0x4afc980 (libc.so.6:strncasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---106892-- REDIR: 0x4afb350 (libc.so.6:strcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---106892-- REDIR: 0x4afcad0 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---106892-- REDIR: 0x4b1a0d0 (libc.so.6:wcsnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---106892-- REDIR: 0x4b189e0 (libc.so.6:wcscpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---106892-- REDIR: 0x4afb9a0 (libc.so.6:strpbrk) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---106892-- REDIR: 0x4afb280 (libc.so.6:index) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---106892-- REDIR: 0x4afb7b0 (libc.so.6:strlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---106892-- REDIR: 0x4b04d20 (libc.so.6:memrchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---106892-- REDIR: 0x4afc9d0 (libc.so.6:strcasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---106892-- REDIR: 0x4afc550 (libc.so.6:memchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---106892-- REDIR: 0x4b18ab0 (libc.so.6:wcslen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---106892-- REDIR: 0x4afbc60 (libc.so.6:strspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---106892-- REDIR: 0x4afc8d0 (libc.so.6:stpncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---106892-- REDIR: 0x4afc870 (libc.so.6:stpcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---106892-- REDIR: 0x4afde10 (libc.so.6:strchrnul) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---106892-- REDIR: 0x4afca20 (libc.so.6:strncasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---106892-- REDIR: 0x4be4490 (libc.so.6:__strrchr_avx2) redirected to 0x483ea10 (rindex)
---106892-- REDIR: 0x4af6260 (libc.so.6:malloc) redirected to 0x483b780 (malloc)
---106892-- REDIR: 0x4be4660 (libc.so.6:__strlen_avx2) redirected to 0x483ef40 (strlen)
---106892-- REDIR: 0x4be0c50 (libc.so.6:__memcmp_avx2_movbe) redirected to 0x48421e0 (bcmp)
---106892-- REDIR: 0x4bdfb60 (libc.so.6:__strcmp_avx2) redirected to 0x483fed0 (strcmp)
---106892-- REDIR: 0x4907c70 (libstdc++.so.6:operator new[](unsigned long)) redirected to 0x483c510 (operator new[](unsigned long))
---106892-- REDIR: 0x4be7af0 (libc.so.6:__memset_avx2_unaligned_erms) redirected to 0x48428e0 (memset)
---106892-- REDIR: 0x4907c10 (libstdc++.so.6:operator new(unsigned long)) redirected to 0x483bdf0 (operator new(unsigned long))
---106892-- REDIR: 0x4905e90 (libstdc++.so.6:operator delete[](void*)) redirected to 0x483d6e0 (operator delete[](void*))
---106892-- REDIR: 0x4905e60 (libstdc++.so.6:operator delete(void*)) redirected to 0x483cf50 (operator delete(void*))
-==106892== Use of uninitialised value of size 8
-==106892==    at 0x10C5FD: cell::swap(cell&) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C4D3: cell::operator=(cell const&) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C0EF: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10A807: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892==  Uninitialised value was created by a stack allocation
-==106892==    at 0x10A69C: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892== 
---106892-- REDIR: 0x4be7670 (libc.so.6:__memcpy_avx_unaligned_erms) redirected to 0x48429f0 (memmove)
-==106892== Use of uninitialised value of size 8
-==106892==    at 0x10CA8D: mazeSolver::actionSelection() (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C82C: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C15E: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10A807: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892==  Uninitialised value was created by a stack allocation
-==106892==    at 0x10A69C: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892== 
-==106892== Use of uninitialised value of size 8
-==106892==    at 0x10CAD7: mazeSolver::actionSelection() (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C82C: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C15E: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10A807: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892==  Uninitialised value was created by a stack allocation
-==106892==    at 0x10A69C: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892== 
---106892-- REDIR: 0x4be7650 (libc.so.6:__mempcpy_avx_unaligned_erms) redirected to 0x4843660 (mempcpy)
-==106892== Use of uninitialised value of size 8
-==106892==    at 0x10C850: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C15E: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10A807: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892==  Uninitialised value was created by a stack allocation
-==106892==    at 0x10A69C: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892== 
-==106892== Use of uninitialised value of size 8
-==106892==    at 0x10DF5F: cell::setQValue(float*) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C86E: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C15E: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10A807: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892==  Uninitialised value was created by a stack allocation
-==106892==    at 0x10A69C: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892== 
-==106892== Use of uninitialised value of size 8
-==106892==    at 0x10DF63: cell::setQValue(float*) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C86E: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C15E: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10A807: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892==  Uninitialised value was created by a stack allocation
-==106892==    at 0x10A69C: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892== 
---106892-- REDIR: 0x4be42a0 (libc.so.6:__strchrnul_avx2) redirected to 0x4843540 (strchrnul)
---106892-- REDIR: 0x4be04c0 (libc.so.6:__memchr_avx2) redirected to 0x4840050 (memchr)
-==106892== Use of uninitialised value of size 8
-==106892==    at 0x10C3CE: cell::print() const (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C87E: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C15E: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10A807: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892==  Uninitialised value was created by a stack allocation
-==106892==    at 0x10A69C: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892== 
-==106892== Use of uninitialised value of size 8
-==106892==    at 0x10C6F5: cell::cell(cell const&) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C4C0: cell::operator=(cell const&) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C8A8: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C15E: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10A807: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892==  Uninitialised value was created by a stack allocation
-==106892==    at 0x10A69C: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892== 
-==106892== Use of uninitialised value of size 8
-==106892==    at 0x10C5FD: cell::swap(cell&) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C4D3: cell::operator=(cell const&) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C8F8: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C15E: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10A807: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892==  Uninitialised value was created by a stack allocation
-==106892==    at 0x10A69C: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892== 
-==106892== Use of uninitialised value of size 8
-==106892==    at 0x10C3CE: cell::print() const (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C908: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C15E: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10A807: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892==  Uninitialised value was created by a stack allocation
-==106892==    at 0x10A69C: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892== 
-==106892== Conditional jump or move depends on uninitialised value(s)
-==106892==    at 0x10BFF3: cell::~cell() (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C237: mazeSolver::~mazeSolver() (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10A816: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892==  Uninitialised value was created by a stack allocation
-==106892==    at 0x10A69C: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892== 
-==106892== Conditional jump or move depends on uninitialised value(s)
-==106892==    at 0x483D705: operator delete[](void*) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==106892==    by 0x10C004: cell::~cell() (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C237: mazeSolver::~mazeSolver() (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10A816: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892==  Uninitialised value was created by a stack allocation
-==106892==    at 0x10A69C: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892== 
-==106892== Invalid free() / delete / delete[] / realloc()
-==106892==    at 0x483D74F: operator delete[](void*) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==106892==    by 0x10C004: cell::~cell() (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C237: mazeSolver::~mazeSolver() (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10A816: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892==  Address 0x113163 is 0 bytes inside data symbol "_ZStL8__ioinit"
-==106892== 
---106892-- REDIR: 0x4af6850 (libc.so.6:free) redirected to 0x483c9d0 (free)
-==106892== 
-==106892== HEAP SUMMARY:
-==106892==     in use at exit: 16 bytes in 1 blocks
-==106892==   total heap usage: 755 allocs, 755 frees, 106,192 bytes allocated
-==106892== 
-==106892== Searching for pointers to 1 not-freed blocks
-==106892== Checked 115,464 bytes
-==106892== 
-==106892== 16 bytes in 1 blocks are definitely lost in loss record 1 of 1
-==106892==    at 0x483C583: operator new[](unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==106892==    by 0x10C128: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10A807: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892== 
-==106892== LEAK SUMMARY:
-==106892==    definitely lost: 16 bytes in 1 blocks
-==106892==    indirectly lost: 0 bytes in 0 blocks
-==106892==      possibly lost: 0 bytes in 0 blocks
-==106892==    still reachable: 0 bytes in 0 blocks
-==106892==         suppressed: 0 bytes in 0 blocks
-==106892== 
-==106892== ERROR SUMMARY: 725 errors from 14 contexts (suppressed: 0 from 0)
-==106892== 
-==106892== 1 errors in context 1 of 14:
-==106892== Invalid free() / delete / delete[] / realloc()
-==106892==    at 0x483D74F: operator delete[](void*) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==106892==    by 0x10C004: cell::~cell() (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C237: mazeSolver::~mazeSolver() (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10A816: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892==  Address 0x113163 is 0 bytes inside data symbol "_ZStL8__ioinit"
-==106892== 
-==106892== 
-==106892== 1 errors in context 2 of 14:
-==106892== Conditional jump or move depends on uninitialised value(s)
-==106892==    at 0x483D705: operator delete[](void*) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==106892==    by 0x10C004: cell::~cell() (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C237: mazeSolver::~mazeSolver() (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10A816: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892==  Uninitialised value was created by a stack allocation
-==106892==    at 0x10A69C: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892== 
-==106892== 
-==106892== 1 errors in context 3 of 14:
-==106892== Conditional jump or move depends on uninitialised value(s)
-==106892==    at 0x10BFF3: cell::~cell() (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C237: mazeSolver::~mazeSolver() (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10A816: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892==  Uninitialised value was created by a stack allocation
-==106892==    at 0x10A69C: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892== 
-==106892== 
-==106892== 1 errors in context 4 of 14:
-==106892== Use of uninitialised value of size 8
-==106892==    at 0x10C5FD: cell::swap(cell&) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C4D3: cell::operator=(cell const&) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C0EF: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10A807: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892==  Uninitialised value was created by a stack allocation
-==106892==    at 0x10A69C: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892== 
-==106892== 
-==106892== 30 errors in context 5 of 14:
-==106892== Use of uninitialised value of size 8
-==106892==    at 0x10C5FD: cell::swap(cell&) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C4D3: cell::operator=(cell const&) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C8F8: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C15E: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10A807: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892==  Uninitialised value was created by a stack allocation
-==106892==    at 0x10A69C: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892== 
-==106892== 
-==106892== 30 errors in context 6 of 14:
-==106892== Use of uninitialised value of size 8
-==106892==    at 0x10C6F5: cell::cell(cell const&) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C4C0: cell::operator=(cell const&) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C8A8: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C15E: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10A807: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892==  Uninitialised value was created by a stack allocation
-==106892==    at 0x10A69C: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892== 
-==106892== 
-==106892== 30 errors in context 7 of 14:
-==106892== Use of uninitialised value of size 8
-==106892==    at 0x10C850: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C15E: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10A807: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892==  Uninitialised value was created by a stack allocation
-==106892==    at 0x10A69C: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892== 
-==106892== 
-==106892== 30 errors in context 8 of 14:
-==106892== Use of uninitialised value of size 8
-==106892==    at 0x10CA8D: mazeSolver::actionSelection() (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C82C: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C15E: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10A807: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892==  Uninitialised value was created by a stack allocation
-==106892==    at 0x10A69C: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892== 
-==106892== 
-==106892== 120 errors in context 9 of 14:
-==106892== Use of uninitialised value of size 8
-==106892==    at 0x10C3CE: cell::print() const (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C908: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C15E: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10A807: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892==  Uninitialised value was created by a stack allocation
-==106892==    at 0x10A69C: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892== 
-==106892== 
-==106892== 120 errors in context 10 of 14:
-==106892== Use of uninitialised value of size 8
-==106892==    at 0x10C3CE: cell::print() const (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C87E: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C15E: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10A807: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892==  Uninitialised value was created by a stack allocation
-==106892==    at 0x10A69C: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892== 
-==106892== 
-==106892== 120 errors in context 11 of 14:
-==106892== Use of uninitialised value of size 8
-==106892==    at 0x10DF63: cell::setQValue(float*) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C86E: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C15E: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10A807: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892==  Uninitialised value was created by a stack allocation
-==106892==    at 0x10A69C: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892== 
-==106892== 
-==106892== 120 errors in context 12 of 14:
-==106892== Use of uninitialised value of size 8
-==106892==    at 0x10DF5F: cell::setQValue(float*) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C86E: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C15E: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10A807: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892==  Uninitialised value was created by a stack allocation
-==106892==    at 0x10A69C: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892== 
-==106892== 
-==106892== 120 errors in context 13 of 14:
-==106892== Use of uninitialised value of size 8
-==106892==    at 0x10CAD7: mazeSolver::actionSelection() (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C82C: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10C15E: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
-==106892==    by 0x10A807: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892==  Uninitialised value was created by a stack allocation
-==106892==    at 0x10A69C: main (in /home/thomas/git/Exercise2RL/main/main)
-==106892== 
-==106892== ERROR SUMMARY: 725 errors from 14 contexts (suppressed: 0 from 0)
+==135838== Memcheck, a memory error detector
+==135838== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==135838== Using Valgrind-3.15.0-608cb11914-20190413 and LibVEX; rerun with -h for copyright info
+==135838== Command: ./main
+==135838== Parent PID: 24685
+==135838== 
+--135838-- 
+--135838-- Valgrind options:
+--135838--    --leak-check=full
+--135838--    --show-leak-kinds=all
+--135838--    --track-origins=yes
+--135838--    --verbose
+--135838--    --log-file=valgrind-out.txt
+--135838-- Contents of /proc/version:
+--135838--   Linux version 5.4.0-58-generic (buildd@lcy01-amd64-004) (gcc version 9.3.0 (Ubuntu 9.3.0-17ubuntu1~20.04)) #64-Ubuntu SMP Wed Dec 9 08:16:25 UTC 2020
+--135838-- 
+--135838-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-ssse3-avx-avx2-rdrand
+--135838-- Page sizes: currently 4096, max supported 4096
+--135838-- Valgrind library directory: /usr/lib/x86_64-linux-gnu/valgrind
+--135838-- Reading syms from /home/thomas/git/Exercise2RL/main/main
+--135838-- Reading syms from /usr/lib/x86_64-linux-gnu/ld-2.31.so
+--135838--   Considering /usr/lib/x86_64-linux-gnu/ld-2.31.so ..
+--135838--   .. CRC mismatch (computed 6cded93a wanted 1af57820)
+--135838--   Considering /lib/x86_64-linux-gnu/ld-2.31.so ..
+--135838--   .. CRC mismatch (computed 6cded93a wanted 1af57820)
+--135838--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/ld-2.31.so ..
+--135838--   .. CRC is valid
+--135838-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/memcheck-amd64-linux
+--135838--    object doesn't have a symbol table
+--135838--    object doesn't have a dynamic symbol table
+--135838-- Scheduler: using generic scheduler lock implementation.
+--135838-- Reading suppressions file: /usr/lib/x86_64-linux-gnu/valgrind/default.supp
+==135838== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-135838-by-thomas-on-???
+==135838== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-135838-by-thomas-on-???
+==135838== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-135838-by-thomas-on-???
+==135838== 
+==135838== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==135838== don't want to do, unless you know exactly what you're doing,
+==135838== or are doing some strange experiment):
+==135838==   /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=135838 ...command...
+==135838== 
+==135838== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==135838==   /path/to/gdb ./main
+==135838== and then give GDB the following command
+==135838==   target remote | /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=135838
+==135838== --pid is optional if only one valgrind process is running
+==135838== 
+--135838-- REDIR: 0x4022d80 (ld-linux-x86-64.so.2:strlen) redirected to 0x580c9ce2 (???)
+--135838-- REDIR: 0x4022b50 (ld-linux-x86-64.so.2:index) redirected to 0x580c9cfc (???)
+--135838-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_core-amd64-linux.so
+--135838--    object doesn't have a symbol table
+--135838-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so
+--135838--    object doesn't have a symbol table
+==135838== WARNING: new redirection conflicts with existing -- ignoring it
+--135838--     old: 0x04022d80 (strlen              ) R-> (0000.0) 0x580c9ce2 ???
+--135838--     new: 0x04022d80 (strlen              ) R-> (2007.0) 0x0483f060 strlen
+--135838-- REDIR: 0x401f560 (ld-linux-x86-64.so.2:strcmp) redirected to 0x483ffd0 (strcmp)
+--135838-- REDIR: 0x40232e0 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4843a20 (mempcpy)
+--135838-- Reading syms from /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28
+--135838--    object doesn't have a symbol table
+--135838-- Reading syms from /usr/lib/x86_64-linux-gnu/libm-2.31.so
+--135838--   Considering /usr/lib/x86_64-linux-gnu/libm-2.31.so ..
+--135838--   .. CRC mismatch (computed b88da5c9 wanted 1658d783)
+--135838--   Considering /lib/x86_64-linux-gnu/libm-2.31.so ..
+--135838--   .. CRC mismatch (computed b88da5c9 wanted 1658d783)
+--135838--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libm-2.31.so ..
+--135838--   .. CRC is valid
+--135838-- Reading syms from /usr/lib/x86_64-linux-gnu/libgcc_s.so.1
+--135838--    object doesn't have a symbol table
+--135838-- Reading syms from /usr/lib/x86_64-linux-gnu/libc-2.31.so
+--135838--   Considering /usr/lib/x86_64-linux-gnu/libc-2.31.so ..
+--135838--   .. CRC mismatch (computed cd1655d1 wanted 09373696)
+--135838--   Considering /lib/x86_64-linux-gnu/libc-2.31.so ..
+--135838--   .. CRC mismatch (computed cd1655d1 wanted 09373696)
+--135838--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libc-2.31.so ..
+--135838--   .. CRC is valid
+--135838-- REDIR: 0x4c4b600 (libc.so.6:memmove) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--135838-- REDIR: 0x4c4a900 (libc.so.6:strncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--135838-- REDIR: 0x4c4b930 (libc.so.6:strcasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--135838-- REDIR: 0x4c4a220 (libc.so.6:strcat) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--135838-- REDIR: 0x4c4a960 (libc.so.6:rindex) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--135838-- REDIR: 0x4c4cdd0 (libc.so.6:rawmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--135838-- REDIR: 0x4c67e60 (libc.so.6:wmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--135838-- REDIR: 0x4c679a0 (libc.so.6:wcscmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--135838-- REDIR: 0x4c4b760 (libc.so.6:mempcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--135838-- REDIR: 0x4c4b590 (libc.so.6:bcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--135838-- REDIR: 0x4c4a890 (libc.so.6:strncmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--135838-- REDIR: 0x4c4a2d0 (libc.so.6:strcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--135838-- REDIR: 0x4c4b6c0 (libc.so.6:memset) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--135838-- REDIR: 0x4c67960 (libc.so.6:wcschr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--135838-- REDIR: 0x4c4a7f0 (libc.so.6:strnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--135838-- REDIR: 0x4c4a3b0 (libc.so.6:strcspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--135838-- REDIR: 0x4c4b980 (libc.so.6:strncasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--135838-- REDIR: 0x4c4a350 (libc.so.6:strcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--135838-- REDIR: 0x4c4bad0 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--135838-- REDIR: 0x4c690d0 (libc.so.6:wcsnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--135838-- REDIR: 0x4c679e0 (libc.so.6:wcscpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--135838-- REDIR: 0x4c4a9a0 (libc.so.6:strpbrk) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--135838-- REDIR: 0x4c4a280 (libc.so.6:index) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--135838-- REDIR: 0x4c4a7b0 (libc.so.6:strlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--135838-- REDIR: 0x4c53d20 (libc.so.6:memrchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--135838-- REDIR: 0x4c4b9d0 (libc.so.6:strcasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--135838-- REDIR: 0x4c4b550 (libc.so.6:memchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--135838-- REDIR: 0x4c67ab0 (libc.so.6:wcslen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--135838-- REDIR: 0x4c4ac60 (libc.so.6:strspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--135838-- REDIR: 0x4c4b8d0 (libc.so.6:stpncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--135838-- REDIR: 0x4c4b870 (libc.so.6:stpcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--135838-- REDIR: 0x4c4ce10 (libc.so.6:strchrnul) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--135838-- REDIR: 0x4c4ba20 (libc.so.6:strncasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--135838-- REDIR: 0x4d33490 (libc.so.6:__strrchr_avx2) redirected to 0x483ea10 (rindex)
+--135838-- REDIR: 0x4c45260 (libc.so.6:malloc) redirected to 0x483b780 (malloc)
+--135838-- REDIR: 0x4d33660 (libc.so.6:__strlen_avx2) redirected to 0x483ef40 (strlen)
+--135838-- REDIR: 0x4d2fc50 (libc.so.6:__memcmp_avx2_movbe) redirected to 0x48421e0 (bcmp)
+--135838-- REDIR: 0x4d2eb60 (libc.so.6:__strcmp_avx2) redirected to 0x483fed0 (strcmp)
+--135838-- REDIR: 0x4907c70 (libstdc++.so.6:operator new[](unsigned long)) redirected to 0x483c510 (operator new[](unsigned long))
+--135838-- REDIR: 0x4d36af0 (libc.so.6:__memset_avx2_unaligned_erms) redirected to 0x48428e0 (memset)
+--135838-- REDIR: 0x4907c10 (libstdc++.so.6:operator new(unsigned long)) redirected to 0x483bdf0 (operator new(unsigned long))
+--135838-- REDIR: 0x4905e90 (libstdc++.so.6:operator delete[](void*)) redirected to 0x483d6e0 (operator delete[](void*))
+--135838-- REDIR: 0x4905e60 (libstdc++.so.6:operator delete(void*)) redirected to 0x483cf50 (operator delete(void*))
+==135838== Use of uninitialised value of size 8
+==135838==    at 0x10C86D: cell::swap(cell&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C743: cell::operator=(cell const&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C4A1: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A839: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+--135838-- REDIR: 0x4d36650 (libc.so.6:__mempcpy_avx_unaligned_erms) redirected to 0x4843660 (mempcpy)
+==135838== Use of uninitialised value of size 8
+==135838==    at 0x10C86D: cell::swap(cell&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C743: cell::operator=(cell const&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CB87: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C572: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A839: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+--135838-- REDIR: 0x4d36670 (libc.so.6:__memcpy_avx_unaligned_erms) redirected to 0x48429f0 (memmove)
+==135838== Use of uninitialised value of size 8
+==135838==    at 0x10D45B: mazeSolver::getMaxQValue() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CEC3: mazeSolver::actionSelection() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CBDB: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C572: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A839: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== Use of uninitialised value of size 8
+==135838==    at 0x10D4A5: mazeSolver::getMaxQValue() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CEC3: mazeSolver::actionSelection() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CBDB: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C572: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A839: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+--135838-- REDIR: 0x4d332a0 (libc.so.6:__strchrnul_avx2) redirected to 0x4843540 (strchrnul)
+--135838-- REDIR: 0x4d2f4c0 (libc.so.6:__memchr_avx2) redirected to 0x4840050 (memchr)
+==135838== Use of uninitialised value of size 8
+==135838==    at 0x10CC23: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C572: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A839: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== Use of uninitialised value of size 8
+==135838==    at 0x10E711: cell::setQValue(float*) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CCC8: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C572: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A839: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== Use of uninitialised value of size 8
+==135838==    at 0x10E715: cell::setQValue(float*) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CCC8: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C572: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A839: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== Use of uninitialised value of size 8
+==135838==    at 0x10D45B: mazeSolver::getMaxQValue() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CCD4: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C572: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A839: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== Use of uninitialised value of size 8
+==135838==    at 0x10D4A5: mazeSolver::getMaxQValue() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CCD4: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C572: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A839: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== Use of uninitialised value of size 8
+==135838==    at 0x10CADF: print1(float*) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CCE4: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C572: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A839: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== Use of uninitialised value of size 8
+==135838==    at 0x10BE9C: cell::print() const (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CD72: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C572: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A839: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== Use of uninitialised value of size 8
+==135838==    at 0x10C17F: cell::cell(cell const&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C730: cell::operator=(cell const&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CDA8: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C572: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A839: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== Use of uninitialised value of size 8
+==135838==    at 0x10C86D: cell::swap(cell&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C743: cell::operator=(cell const&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CDBF: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C572: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A839: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== Use of uninitialised value of size 8
+==135838==    at 0x10CADF: print1(float*) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CDF3: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C572: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A839: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== Use of uninitialised value of size 8
+==135838==    at 0x10C86D: cell::swap(cell&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C743: cell::operator=(cell const&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10D27B: mazeSolver::actionValueFunc(std::vector<cell, std::allocator<cell> > const&, float, int, float) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CC1E: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C572: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A839: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== Use of uninitialised value of size 8
+==135838==    at 0x10D45B: mazeSolver::getMaxQValue() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CEC3: mazeSolver::actionSelection() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10D287: mazeSolver::actionValueFunc(std::vector<cell, std::allocator<cell> > const&, float, int, float) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CC1E: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C572: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A839: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== Use of uninitialised value of size 8
+==135838==    at 0x10D4A5: mazeSolver::getMaxQValue() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CEC3: mazeSolver::actionSelection() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10D287: mazeSolver::actionValueFunc(std::vector<cell, std::allocator<cell> > const&, float, int, float) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CC1E: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C572: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A839: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== Use of uninitialised value of size 8
+==135838==    at 0x10C86D: cell::swap(cell&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C743: cell::operator=(cell const&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10D27B: mazeSolver::actionValueFunc(std::vector<cell, std::allocator<cell> > const&, float, int, float) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10D2B6: mazeSolver::actionValueFunc(std::vector<cell, std::allocator<cell> > const&, float, int, float) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CC1E: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C572: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A839: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== Use of uninitialised value of size 8
+==135838==    at 0x10D45B: mazeSolver::getMaxQValue() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CEC3: mazeSolver::actionSelection() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10D287: mazeSolver::actionValueFunc(std::vector<cell, std::allocator<cell> > const&, float, int, float) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10D2B6: mazeSolver::actionValueFunc(std::vector<cell, std::allocator<cell> > const&, float, int, float) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CC1E: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C572: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A839: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== Use of uninitialised value of size 8
+==135838==    at 0x10D4A5: mazeSolver::getMaxQValue() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CEC3: mazeSolver::actionSelection() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10D287: mazeSolver::actionValueFunc(std::vector<cell, std::allocator<cell> > const&, float, int, float) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10D2B6: mazeSolver::actionValueFunc(std::vector<cell, std::allocator<cell> > const&, float, int, float) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CC1E: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C572: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A839: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== Conditional jump or move depends on uninitialised value(s)
+==135838==    at 0x10C647: mazeSolver::~mazeSolver() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A848: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== Conditional jump or move depends on uninitialised value(s)
+==135838==    at 0x483D705: operator delete[](void*) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==135838==    by 0x10C658: mazeSolver::~mazeSolver() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A848: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== Invalid free() / delete / delete[] / realloc()
+==135838==    at 0x483D74F: operator delete[](void*) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==135838==    by 0x10C658: mazeSolver::~mazeSolver() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A848: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Address 0x113008 is in the Data segment of /home/thomas/git/Exercise2RL/main/main
+==135838== 
+==135838== Conditional jump or move depends on uninitialised value(s)
+==135838==    at 0x10C399: cell::~cell() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C668: mazeSolver::~mazeSolver() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A848: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== Conditional jump or move depends on uninitialised value(s)
+==135838==    at 0x483D705: operator delete[](void*) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==135838==    by 0x10C3AA: cell::~cell() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C668: mazeSolver::~mazeSolver() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A848: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== Invalid free() / delete / delete[] / realloc()
+==135838==    at 0x483D74F: operator delete[](void*) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==135838==    by 0x10C3AA: cell::~cell() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C668: mazeSolver::~mazeSolver() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A848: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Address 0x113008 is in the Data segment of /home/thomas/git/Exercise2RL/main/main
+==135838== 
+--135838-- REDIR: 0x4c45850 (libc.so.6:free) redirected to 0x483c9d0 (free)
+==135838== 
+==135838== HEAP SUMMARY:
+==135838==     in use at exit: 16 bytes in 1 blocks
+==135838==   total heap usage: 1,594 allocs, 1,595 frees, 129,904 bytes allocated
+==135838== 
+==135838== Searching for pointers to 1 not-freed blocks
+==135838== Checked 115,464 bytes
+==135838== 
+==135838== 16 bytes in 1 blocks are definitely lost in loss record 1 of 1
+==135838==    at 0x483C583: operator new[](unsigned long) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==135838==    by 0x10C4DA: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A839: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== LEAK SUMMARY:
+==135838==    definitely lost: 16 bytes in 1 blocks
+==135838==    indirectly lost: 0 bytes in 0 blocks
+==135838==      possibly lost: 0 bytes in 0 blocks
+==135838==    still reachable: 0 bytes in 0 blocks
+==135838==         suppressed: 0 bytes in 0 blocks
+==135838== 
+==135838== ERROR SUMMARY: 3966 errors from 27 contexts (suppressed: 0 from 0)
+==135838== 
+==135838== 1 errors in context 1 of 27:
+==135838== Invalid free() / delete / delete[] / realloc()
+==135838==    at 0x483D74F: operator delete[](void*) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==135838==    by 0x10C3AA: cell::~cell() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C668: mazeSolver::~mazeSolver() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A848: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Address 0x113008 is in the Data segment of /home/thomas/git/Exercise2RL/main/main
+==135838== 
+==135838== 
+==135838== 1 errors in context 2 of 27:
+==135838== Conditional jump or move depends on uninitialised value(s)
+==135838==    at 0x483D705: operator delete[](void*) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==135838==    by 0x10C3AA: cell::~cell() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C668: mazeSolver::~mazeSolver() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A848: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== 
+==135838== 1 errors in context 3 of 27:
+==135838== Conditional jump or move depends on uninitialised value(s)
+==135838==    at 0x10C399: cell::~cell() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C668: mazeSolver::~mazeSolver() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A848: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== 
+==135838== 1 errors in context 4 of 27:
+==135838== Invalid free() / delete / delete[] / realloc()
+==135838==    at 0x483D74F: operator delete[](void*) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==135838==    by 0x10C658: mazeSolver::~mazeSolver() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A848: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Address 0x113008 is in the Data segment of /home/thomas/git/Exercise2RL/main/main
+==135838== 
+==135838== 
+==135838== 1 errors in context 5 of 27:
+==135838== Conditional jump or move depends on uninitialised value(s)
+==135838==    at 0x483D705: operator delete[](void*) (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==135838==    by 0x10C658: mazeSolver::~mazeSolver() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A848: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== 
+==135838== 1 errors in context 6 of 27:
+==135838== Conditional jump or move depends on uninitialised value(s)
+==135838==    at 0x10C647: mazeSolver::~mazeSolver() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A848: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== 
+==135838== 1 errors in context 7 of 27:
+==135838== Use of uninitialised value of size 8
+==135838==    at 0x10C86D: cell::swap(cell&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C743: cell::operator=(cell const&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C4A1: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A839: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== 
+==135838== 10 errors in context 8 of 27:
+==135838== Use of uninitialised value of size 8
+==135838==    at 0x10C86D: cell::swap(cell&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C743: cell::operator=(cell const&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CB87: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C572: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A839: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== 
+==135838== 45 errors in context 9 of 27:
+==135838== Use of uninitialised value of size 8
+==135838==    at 0x10D45B: mazeSolver::getMaxQValue() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CEC3: mazeSolver::actionSelection() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10D287: mazeSolver::actionValueFunc(std::vector<cell, std::allocator<cell> > const&, float, int, float) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10D2B6: mazeSolver::actionValueFunc(std::vector<cell, std::allocator<cell> > const&, float, int, float) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CC1E: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C572: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A839: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== 
+==135838== 45 errors in context 10 of 27:
+==135838== Use of uninitialised value of size 8
+==135838==    at 0x10C86D: cell::swap(cell&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C743: cell::operator=(cell const&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10D27B: mazeSolver::actionValueFunc(std::vector<cell, std::allocator<cell> > const&, float, int, float) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10D2B6: mazeSolver::actionValueFunc(std::vector<cell, std::allocator<cell> > const&, float, int, float) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CC1E: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C572: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A839: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== 
+==135838== 66 errors in context 11 of 27:
+==135838== Use of uninitialised value of size 8
+==135838==    at 0x10D45B: mazeSolver::getMaxQValue() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CEC3: mazeSolver::actionSelection() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10D287: mazeSolver::actionValueFunc(std::vector<cell, std::allocator<cell> > const&, float, int, float) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CC1E: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C572: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A839: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== 
+==135838== 66 errors in context 12 of 27:
+==135838== Use of uninitialised value of size 8
+==135838==    at 0x10C86D: cell::swap(cell&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C743: cell::operator=(cell const&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10D27B: mazeSolver::actionValueFunc(std::vector<cell, std::allocator<cell> > const&, float, int, float) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CC1E: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C572: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A839: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== 
+==135838== 97 errors in context 13 of 27:
+==135838== Use of uninitialised value of size 8
+==135838==    at 0x10C86D: cell::swap(cell&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C743: cell::operator=(cell const&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CDBF: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C572: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A839: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== 
+==135838== 97 errors in context 14 of 27:
+==135838== Use of uninitialised value of size 8
+==135838==    at 0x10C17F: cell::cell(cell const&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C730: cell::operator=(cell const&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CDA8: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C572: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A839: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== 
+==135838== 100 errors in context 15 of 27:
+==135838== Use of uninitialised value of size 8
+==135838==    at 0x10D45B: mazeSolver::getMaxQValue() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CCD4: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C572: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A839: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== 
+==135838== 100 errors in context 16 of 27:
+==135838== Use of uninitialised value of size 8
+==135838==    at 0x10CC23: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C572: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A839: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== 
+==135838== 100 errors in context 17 of 27:
+==135838== Use of uninitialised value of size 8
+==135838==    at 0x10D45B: mazeSolver::getMaxQValue() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CEC3: mazeSolver::actionSelection() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CBDB: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C572: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A839: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== 
+==135838== 180 errors in context 18 of 27:
+==135838== Use of uninitialised value of size 8
+==135838==    at 0x10D4A5: mazeSolver::getMaxQValue() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CEC3: mazeSolver::actionSelection() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10D287: mazeSolver::actionValueFunc(std::vector<cell, std::allocator<cell> > const&, float, int, float) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10D2B6: mazeSolver::actionValueFunc(std::vector<cell, std::allocator<cell> > const&, float, int, float) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CC1E: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C572: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A839: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== 
+==135838== 264 errors in context 19 of 27:
+==135838== Use of uninitialised value of size 8
+==135838==    at 0x10D4A5: mazeSolver::getMaxQValue() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CEC3: mazeSolver::actionSelection() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10D287: mazeSolver::actionValueFunc(std::vector<cell, std::allocator<cell> > const&, float, int, float) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CC1E: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C572: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A839: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== 
+==135838== 388 errors in context 20 of 27:
+==135838== Use of uninitialised value of size 8
+==135838==    at 0x10BE9C: cell::print() const (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CD72: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C572: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A839: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== 
+==135838== 400 errors in context 21 of 27:
+==135838== Use of uninitialised value of size 8
+==135838==    at 0x10CADF: print1(float*) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CDF3: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C572: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A839: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== 
+==135838== 400 errors in context 22 of 27:
+==135838== Use of uninitialised value of size 8
+==135838==    at 0x10CADF: print1(float*) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CCE4: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C572: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A839: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== 
+==135838== 400 errors in context 23 of 27:
+==135838== Use of uninitialised value of size 8
+==135838==    at 0x10D4A5: mazeSolver::getMaxQValue() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CCD4: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C572: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A839: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== 
+==135838== 400 errors in context 24 of 27:
+==135838== Use of uninitialised value of size 8
+==135838==    at 0x10E715: cell::setQValue(float*) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CCC8: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C572: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A839: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== 
+==135838== 400 errors in context 25 of 27:
+==135838== Use of uninitialised value of size 8
+==135838==    at 0x10E711: cell::setQValue(float*) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CCC8: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C572: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A839: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== 
+==135838== 400 errors in context 26 of 27:
+==135838== Use of uninitialised value of size 8
+==135838==    at 0x10D4A5: mazeSolver::getMaxQValue() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CEC3: mazeSolver::actionSelection() (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10CBDB: mazeSolver::runMaze(std::vector<cell, std::allocator<cell> >&) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10C572: mazeSolver::mazeSolver(std::vector<cell, std::allocator<cell> >&, unsigned long, unsigned long, unsigned long) (in /home/thomas/git/Exercise2RL/main/main)
+==135838==    by 0x10A839: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838==  Uninitialised value was created by a stack allocation
+==135838==    at 0x10A6CD: main (in /home/thomas/git/Exercise2RL/main/main)
+==135838== 
+==135838== ERROR SUMMARY: 3966 errors from 27 contexts (suppressed: 0 from 0)

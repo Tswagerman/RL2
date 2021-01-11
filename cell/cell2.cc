@@ -3,7 +3,8 @@
 
 cell::cell(size_t width, size_t height, char character)
   :d_x(width),
-    d_y(height)
+    d_y(height),
+    d_character(character)
 {
     //cout << "Cell Created!" << endl;
     d_QValue = new float[SIZE]; //Default q values for four directions
@@ -15,7 +16,7 @@ cell::cell(size_t width, size_t height, char character)
     if ((character == '_') | (character == '|'))
     {
         setBorder(true);
-        d_reward = -5; //Walking into walls is punished    
+        d_reward = -50; //Walking into walls is punished    
     }
     else if (character == 'S') //Starting point
     {
@@ -23,11 +24,11 @@ cell::cell(size_t width, size_t height, char character)
         setStart(true);
     }    
     else if (character == 'T')
-        d_reward = -20; //Traps are present
+        d_reward = -200; //Traps are present
     else if (character == 'G')
         d_reward = 15; //There is gold to be found too
     else if (character == 'X')
-        d_reward = 50; //The exit of the maze
-    else
+        d_reward = 5000; //The exit of the maze
+    else if (character == 'P')
         d_reward = -1; //making sure unnecessary moves are punished
 }

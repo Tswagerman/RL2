@@ -42,25 +42,27 @@ int main()
 {
     const char* maze[12] = {
         "___________",
-        "|S|     |G|",
-        "| |  |  | |",
-        "| |  | _| |",
-        "|  _ |   _|",
-        "| |  | | | ",
-        "|_|__| | | ",
-        "|G|  |T  | ",
-        "| | ___| | ",
-        "|      | | ",
-        "|      | | ",
+        "|S|PPPPP|G|",
+        "|P|PP|PP|P|",
+        "|PPPP|P_|P|",
+        "|P _P|PPPP|",
+        "|P|PP|P|PP| ",
+        "|P|__|P|P | ",
+        "|G|PP|T P| ",
+        "|_|P___|P| ",
+        "|PPPPPP|P| ",
+        "|PPPPPPPP| ",
         "|X_______| ",
     };
     size_t widthMaze = 11;
     size_t heightMaze = 12;
     size_t sizeMaze = widthMaze * heightMaze;
     std::vector<cell> mazeGrid;
-    makeGrid(mazeGrid, widthMaze, heightMaze, maze);;
+    makeGrid(mazeGrid, widthMaze, heightMaze, maze);
+    mazeGrid.at(23).print();
     size_t start = getStartPos(mazeGrid, sizeMaze);
     //print(mazeGrid, sizeMaze);
     //recursive reward finding solution
+    //cout << "##### START #####" << start << endl;
     mazeSolver solution(mazeGrid, widthMaze, heightMaze, start); 
 }

@@ -1,7 +1,7 @@
 //#define XERR
 #include "mazesolver.ih"
 
-void mazeSolver::getMaxQValue()
+size_t mazeSolver::selectAction()
 {
     //Using Mersenne twister PRNG in order to initalize random seed.
     random_device rd;
@@ -10,11 +10,13 @@ void mazeSolver::getMaxQValue()
     uniform_int_distribution<int> uniformDist(0, SIZE - 1); 
     int random = uniformDist(gen);
     float max = m_QValue[random];
-    d_actionSelection = random;
     //cout << "RANDOM ACTION SELECTED: " << d_actionSelection << endl;
     for (size_t idx = 0; idx < SIZE; ++idx)
     {
         if (m_QValue[idx] > max)
-            d_actionSelection = idx;
+        {
+            return idx; 
+        }    
     } 
+    return random;
 }
