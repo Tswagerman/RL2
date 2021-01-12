@@ -38,7 +38,7 @@ size_t getStartPos(std::vector<cell> mazeGrid, size_t size)
 
 int main()
 {
-    const char* maze[12] = {
+       /* const char* maze[18] = {
         "___________",
         "|S|PPPPP|P|",
         "|P|PP|PP|P|",
@@ -50,8 +50,14 @@ int main()
         "|P|P___|PP|",
         "|PPPPPP|PP|",
         "|PPPPPPPPP|",
+        "|P|PP|P|PP|",
+        "|P|PP|P|PP|",
+        "|P|PP|P|PP|",
+        "|P|PP|P|PP|",
+        "|P|PP|P|PP|",
+        "|P|PP|P|PP|",
         "|X________|",
-    };
+    };*/
 /*const char* maze[12] = {
         "___________",
         "|PPPPPPPPP| ",
@@ -64,10 +70,30 @@ int main()
         "|PPPPPPPPP| ",
         "|PPPPPPPPP| ",
         "|PPPPPPPPP| ",
-        "|XPPPPPPPP| ",
+        "|X________| ",
     };*/
-    size_t widthMaze = 11;
-    size_t heightMaze = 12;
+const char* maze[18] = {
+        "____________",
+        "|S|PPPPP|PP|",
+        "|P|PP|PP|PP|",
+        "|P|PP|P_|PP|",
+        "|P _P|PPP|P|",
+        "|P|PP|P|P|P|",
+        "|P|__|P|P|P|",
+        "|P|PP|P P|P|",
+        "|P|P___|P|P|",
+        "|P|PPPP|P|P|",
+        "|PPPPPPPP|P|",
+        "|P|__|_|P|P|",
+        "|P|PP|P|P|P|",
+        "|P|PPPP|_|P|",
+        "|P|PP|P|PPP|",
+        "|P|PP|P|PPP|",
+        "|P|__|_|PPP|",
+        "|X_________|",
+    };
+    size_t widthMaze = 12;
+    size_t heightMaze = 18;
     size_t sizeMaze = widthMaze * heightMaze;
     std::vector<cell> mazeGrid;
     makeGrid(mazeGrid, widthMaze, heightMaze, maze);

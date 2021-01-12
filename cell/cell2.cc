@@ -17,7 +17,7 @@ cell::cell(size_t width, size_t height, char character)
     if ((d_character == '_') | (d_character == '|'))
     {
         setBorder(true);
-        d_reward = -0.6; //Walking into walls is punished    
+        d_reward = -1; //Walking into walls is punished    
     }
     else if (d_character == 'S') //Starting point
     {

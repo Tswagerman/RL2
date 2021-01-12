@@ -8,9 +8,9 @@ float mazeSolver::actionValueFunc(std::vector<cell> &mazeGrid, int step, float r
         cout << "1: REWARD = " << reward << endl;
         return -10;
     }   
-    if (step > 2)
+    if (step > 10)
         return reward; 
-    float discountRate = 0.1;
+    float discountRate = 0.3;
     int direction = d_action;
     size_t actionSelection = d_actionSelection;
     size_t idxPlusAction;
