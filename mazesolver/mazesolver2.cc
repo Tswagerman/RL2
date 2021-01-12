@@ -18,7 +18,7 @@ mazeSolver::mazeSolver(vector<cell> &mazeGrid, size_t widthMaze, size_t heightMa
     //d_currentCell.print();
     cout << "BEFORE RUNMAZE#######" << endl << "idx = " << d_idxCell << endl;
     d_runs = 0;
-    for (d_runs = 0; d_runs < 1; ++d_runs)
+    for (d_runs = 0; d_runs < 10; ++d_runs)
     {
         runMaze(mazeGrid);
     }
