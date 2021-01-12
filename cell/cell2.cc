@@ -8,27 +8,31 @@ cell::cell(size_t width, size_t height, char character)
 {
     //cout << "Cell Created!" << endl;
     d_QValue = new float[SIZE]; //Default q values for four directions
-    memset(d_QValue, 0, sizeof(float) * SIZE); //memset can be used to set array to 0
+    memset(d_QValue, 0, sizeof(float) * SIZE); //memset can be used to set array to 0   
     setStart(false);
     setBorder(false);
-    d_count = 0;
+    setExit(false); 
+    d_count = 0; //if implement, change swap, move and copy
     d_averageReward = 0;
-    if ((character == '_') | (character == '|'))
+    if ((d_character == '_') | (d_character == '|'))
     {
         setBorder(true);
-        d_reward = -50; //Walking into walls is punished    
+        d_reward = -0.6; //Walking into walls is punished    
     }
-    else if (character == 'S') //Starting point
+    else if (d_character == 'S') //Starting point
     {
-        d_reward = 0;
         setStart(true);
+        d_reward =  -0.5;
     }    
-    else if (character == 'T')
-        d_reward = -200; //Traps are present
-    else if (character == 'G')
-        d_reward = 15; //There is gold to be found too
-    else if (character == 'X')
-        d_reward = 5000; //The exit of the maze
-    else if (character == 'P')
-        d_reward = -1; //making sure unnecessary moves are punished
+    else if (d_character == 'T')
+        d_reward = -1; //Traps are present
+    else if (d_character == 'G')
+        d_reward = 1; //There is gold to be found too
+    else if (d_character == 'X')
+    {
+        setExit(true);
+        d_reward = 5; //The exit of the maze
+    }
+    else if (d_character == 'P')
+        d_reward = -0.5; //making sure unnecessary moves are punished
 }

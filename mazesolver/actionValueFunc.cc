@@ -2,39 +2,49 @@
 #include "mazesolver.ih"
 
 float mazeSolver::actionValueFunc(std::vector<cell> &mazeGrid, int step, float reward, size_t idxCell)
-{ 
-    //mazeGrid.at(d_idxCell).print();
-    //cout << " ACTIONVALUEFUNC " << endl << "action = " << d_action 
-    //    << "| idx = " << d_idxCell << endl;
-    //cout << "recursion" << endl; 
-    //cout << "idx = " << d_idxCell << endl;
-    float discountRate = 0.9;
-    int direction;
-    size_t actionSelection;
-    size_t idxPlusAction;
-    if (step == 0)
-        actionSelection = d_actionSelection;
-    else        
-        actionSelection = selectAction(); 
-    direction = action(actionSelection); //first time goes wrong
-    idxPlusAction = idxCell + direction;
-    if (((idxPlusAction) >= 0) & ((idxPlusAction) < (d_height * d_width)))
+{     
+    if (((idxCell) < 0) | ((idxCell) > (d_height * d_width)))
     {
-        cout << "INNER INDEX = " << idxPlusAction << endl;
-        cell nextCell(0, 0, ' ');
-        nextCell = mazeGrid.at(idxPlusAction); 
-        reward += nextCell.getReward() * pow(discountRate, step);
-        nextCell.print();
-        if (nextCell.getBorder() == true)
-        {
-            cout << "WALL!!!" << endl;
-            cout << "1: Reward = " << reward << endl;
-            return reward;// reward ;//+ nextCell.getReward() * pow(discountRate, step);
-        }      
-        cout << "2: Reward = " << reward << endl;
-        return reward + actionValueFunc(mazeGrid, step + 1, reward, idxPlusAction);        
+        cout << "1: REWARD = " << reward << endl;
+        return -10;
+    }   
+    if (step > 2)
+        return reward; 
+    float discountRate = 0.1;
+    int direction = d_action;
+    size_t actionSelection = d_actionSelection;
+    size_t idxPlusAction;
+    cell currentCell(0, 0, ' ');
+    currentCell = mazeGrid.at(idxCell);
+    //cout << "INNER CURRENT CELL = " << endl;
+    //currentCell.print();
+    d_maxQ = getMaxQ(currentCell.getQValue());
+    //cout << "d_maxQ = " << d_maxQ << endl;
+    reward += d_maxQ * pow(discountRate, step);
+    cout << "step = " << step << "| INNER INDEX = " << idxCell << endl;
+    if (currentCell.getBorder() == true)
+    {
+        cout << "\033[1;31mENCOUNTERED A WALL! \033[m" << endl;
+        return reward;
     }
-    else
-        return reward -= 75;
+    if (currentCell.getExit() == true)
+    { 
+        cout << "\033[1;31mFOUND THE EXIT! \033[m" << endl;
+        //reset to the starting node
+        d_exit = true;
+        return reward;
+    }
+    actionSelection = selectAction(mazeGrid.at(idxCell).getQValue());      
+    direction = action(actionSelection);
+    idxPlusAction = idxCell + direction; 
+    cout << "direction = " << direction << "| idxPlusAction = " << idxPlusAction << endl;
+    if (d_maxQ == 0) // no Q value
+    {
+        cout << "q = 0" << endl;
+        return reward;
+    }
+    cout << "\033[1;31mRECURSION \033[m" << endl;
+    return actionValueFunc(mazeGrid, step + 1, reward, idxPlusAction);
 }
+
 

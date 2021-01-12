@@ -20,12 +20,10 @@ void makeGrid(std::vector<cell>& mazeGrid, size_t widthMaze, size_t heightMaze, 
         for (size_t width = 0; width < widthMaze; ++width)
         {
             const char* character = maze[height];     
-            //cout << "character = " << character[width] << endl;
             cell currentCell(width, height, character[width]);   
             mazeGrid.push_back(currentCell);                  
         }
     }
-    //cout << "Done filling in mazegrid" << endl;
 }
 
 size_t getStartPos(std::vector<cell> mazeGrid, size_t size)
@@ -42,27 +40,38 @@ int main()
 {
     const char* maze[12] = {
         "___________",
-        "|S|PPPPP|G|",
+        "|S|PPPPP|P|",
         "|P|PP|PP|P|",
         "|PPPP|P_|P|",
         "|P _P|PPPP|",
-        "|P|PP|P|PP| ",
-        "|P|__|P|P | ",
-        "|G|PP|T P| ",
-        "|_|P___|P| ",
-        "|PPPPPP|P| ",
-        "|PPPPPPPP| ",
-        "|X_______| ",
+        "|P|PP|P|PP|",
+        "|P|__|P|P |",
+        "|P|PP|P PP|",
+        "|P|P___|PP|",
+        "|PPPPPP|PP|",
+        "|PPPPPPPPP|",
+        "|X________|",
     };
+/*const char* maze[12] = {
+        "___________",
+        "|PPPPPPPPP| ",
+        "|PPPPPPPPP| ",
+        "|PPPPPPPPP| ",
+        "|SPPPPPPPP|",
+        "|PPPPPPPPP| ",
+        "|PPPPPPPPP| ",
+        "|PPPPPPPPP| ",
+        "|PPPPPPPPP| ",
+        "|PPPPPPPPP| ",
+        "|PPPPPPPPP| ",
+        "|XPPPPPPPP| ",
+    };*/
     size_t widthMaze = 11;
     size_t heightMaze = 12;
     size_t sizeMaze = widthMaze * heightMaze;
     std::vector<cell> mazeGrid;
     makeGrid(mazeGrid, widthMaze, heightMaze, maze);
-    mazeGrid.at(23).print();
     size_t start = getStartPos(mazeGrid, sizeMaze);
-    //print(mazeGrid, sizeMaze);
-    //recursive reward finding solution
-    //cout << "##### START #####" << start << endl;
     mazeSolver solution(mazeGrid, widthMaze, heightMaze, start); 
+    //print(mazeGrid, sizeMaze);
 }

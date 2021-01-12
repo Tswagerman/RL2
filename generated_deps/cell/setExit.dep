@@ -1,0 +1,5 @@
+cell/setExit.o: cell/setExit.cc cell/cell.ih cell/cell.h
+
+cell/cell.ih:
+
+cell/cell.h:

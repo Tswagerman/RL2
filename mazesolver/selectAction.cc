@@ -1,22 +1,17 @@
 //#define XERR
 #include "mazesolver.ih"
 
-size_t mazeSolver::selectAction()
+size_t mazeSolver::selectAction(float* QValue)
 {
-    //Using Mersenne twister PRNG in order to initalize random seed.
-    random_device rd;
-    mt19937 gen(rd());
-	//Randomize which action to take when all action values are equal
-    uniform_int_distribution<int> uniformDist(0, SIZE - 1); 
-    int random = uniformDist(gen);
-    float max = m_QValue[random];
+
+    size_t action = 0;
+    float max = QValue[0];
     //cout << "RANDOM ACTION SELECTED: " << d_actionSelection << endl;
     for (size_t idx = 0; idx < SIZE; ++idx)
-    {
-        if (m_QValue[idx] > max)
+        if (QValue[idx] > max)
         {
-            return idx; 
-        }    
-    } 
-    return random;
+            max = QValue[idx];
+            action = idx;
+        }
+    return action;
 }

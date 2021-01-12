@@ -14,8 +14,12 @@ class mazeSolver
     int d_action;
     size_t d_runs;
     size_t d_steps;
+    size_t d_countSolves;
+    float d_maxQ;
     float *m_QValue;
+    bool d_exit;
     cell d_currentCell;
+    std::stack <float> d_sAction;
     public:
         mazeSolver();
         mazeSolver(vector<cell> &mazeGrid, size_t widthMaze, size_t heightMaze, size_t start);
@@ -25,7 +29,8 @@ class mazeSolver
         void runMaze(vector<cell> &mazeGrid);
         int action(size_t actionSelection);
         float actionValueFunc(std::vector<cell> &input, int step, float reward, size_t idxCell);
-        size_t selectAction();
+        size_t selectAction(float* QValue);
+        float getMaxQ(float* input) const;
 };
         
 #endif

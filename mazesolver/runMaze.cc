@@ -3,56 +3,64 @@
 
 void print1(std::vector<cell> const &input, size_t size)
 {
-    for (size_t i = 0; i < size; i++) {
+    for (size_t i = 0; i < SIZE; i++) 
+    {
         input.at(i).print();
-    }
-}
-
-void print1(float* input)
-{
-    for (size_t i = 0; i < SIZE; i++) {
-        cout << "m_QValue = " << input[i] << endl;
     }
 }
 
 void mazeSolver::runMaze(vector<cell> &mazeGrid)
 {
-    for (d_runs = 0; d_runs < 1; ++d_runs)
-    {
-        //DEFAULT TO STARTING GRID
-        //Don't forget to actually set the QValue of all cells in mazeGrid to 0!
-        d_currentCell = mazeGrid.at(d_start);
-        cout << "##################LOOP##################" << endl;
-        //d_currentCell.print();
-               
-        for (d_steps = 0; d_steps < 1000; ++d_steps)
+    d_currentCell = mazeGrid.at(d_start);
+    cout << "loop" << endl;
+    for (d_steps = 0; d_steps < 1000; ++d_steps)
+    {        
+        cout << "\033[1;31mRUN: \033[0m" << d_runs << 
+            "\033[1;31m | Step: \033[0m" << d_steps << endl;           
+        m_QValue = d_currentCell.getQValue();             
+        d_actionSelection = selectAction(m_QValue);      
+        d_action = action(d_actionSelection);  
+        cell nextCell(0, 0, ' ');
+        nextCell = mazeGrid.at(d_idxCell + d_action);       
+        cout << "CURRENT CELL = " << endl;
+        d_currentCell.print();
+        m_QValue[d_actionSelection] = nextCell.getReward() + actionValueFunc(mazeGrid, 1, 0.0, d_idxCell + d_action);       
+        d_currentCell.setQValue(m_QValue);  
+        //cout << "after action value func CURRENT CELL = " << endl;
+        //d_currentCell.print();           
+        //UPDATE MAZEGRID                      
+        mazeGrid.at(d_idxCell) = d_currentCell;
+        //cout << "mazegrid cell updated = " << endl;
+        mazeGrid.at(d_idxCell).print();
+        if (d_exit == true)
         {
-            cout << "RUN: " << d_runs << "| STEP : " << d_steps << endl;            
-            d_currentCell.print();            
-            m_QValue = d_currentCell.getQValue();    
-            print1(m_QValue);  
-            d_actionSelection = selectAction();      
-            d_action = action(d_actionSelection);
-            //recursive function that estimates the reward. 
-            cout << "ACTION SELECTED: " << d_actionSelection << endl;
-            cout << "1 - runMaze : idx = " << d_idxCell << "| action = " << d_action << endl;  
-            m_QValue[d_actionSelection] = actionValueFunc(mazeGrid, 0, 0.0, d_idxCell);      
-            print1(m_QValue);            
-            cout << "2 - runMaze : idx = " << d_idxCell << "| action = " << d_action << endl;    
-            d_currentCell.setQValue(m_QValue);  
-            //selectAction(); 
-            cell nextCell(0, 0, ' ');
-            nextCell = mazeGrid.at(d_idxCell + d_action);  
-            if (((d_idxCell + d_action) >= 0) & ((d_idxCell + d_action) < (d_height * d_width)))
-            {              
-                //To make sure that the mazegrid cells are updated after changing.
-                //mazeGrid.at(d_idxCell - d_action) = d_currentCell;
-                mazeGrid.at(d_idxCell) = d_currentCell;
-                if (nextCell.getBorder() == false)                
-                    d_currentCell = nextCell; 
-            }     
-            mazeGrid.at(d_idxCell).print();   
-            cout << "\033[1;31mbold red text\033[0m\n";
+            d_exit = false;
+            cout << "\033[1;31mRESET\033[m" << endl;
+            d_idxCell = d_start;
+            d_currentCell = mazeGrid.at(d_idxCell);
+            while (d_sAction.empty() != true)
+                d_sAction.pop();
+            //break;
+            ++d_countSolves;
         }
+        d_sAction.push(d_action); 
+        if ((nextCell.getBorder() == false) & (getMaxQ(d_currentCell.getQValue()) != 0))               
+        {                  
+                      
+            d_idxCell += d_action;
+            d_currentCell = nextCell; 
+        } 
+        else if ((nextCell.getBorder() == true) & (getMaxQ(d_currentCell.getQValue()) != 0))
+        {
+            cout << "\033[1;31mIF STatement\033[m" << endl;  
+            d_action = d_sAction.top();
+            d_idxCell -= d_action;
+            d_sAction.pop();
+            cell previousCell(0, 0, ' ');
+            previousCell = mazeGrid.at(d_idxCell);
+            d_currentCell = previousCell;
+        } 
+        //print1(mazeGrid, 12*11);
     }
+   cout << "d_countSolves = " << d_countSolves << endl;
 }
