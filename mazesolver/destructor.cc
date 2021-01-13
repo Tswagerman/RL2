@@ -5,4 +5,5 @@ mazeSolver::~mazeSolver()
 {
     cout << "MazeSolver Destroyed!" << endl;
     //delete m_QValue;
+    delete[] d_maxCurrentQValue;
 }

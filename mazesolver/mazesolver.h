@@ -2,6 +2,8 @@
 #define INCLUDED_MAZESOLVER_
 #include "../cell/cell.ih"
 
+#define ACTIONSELECTIONS 10000
+
 class mazeSolver
 {
     size_t d_x;
@@ -17,6 +19,7 @@ class mazeSolver
     size_t d_countSolves;
     float d_maxQ;
     float *m_QValue;
+    float *d_maxCurrentQValue;
     bool d_exit;
     cell d_currentCell;
     std::stack <int> d_sAction;

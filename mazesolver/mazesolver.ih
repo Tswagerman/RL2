@@ -1,6 +1,7 @@
 #include <random>
 #include <stack>
-
+#include <iostream>
+#include <fstream>
 #include "mazesolver.h"
 
 using namespace std;
