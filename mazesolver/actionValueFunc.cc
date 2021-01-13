@@ -2,48 +2,36 @@
 #include "mazesolver.ih"
 
 float mazeSolver::actionValueFunc(std::vector<cell> &mazeGrid, int step, float reward, size_t idxCell)
-{     
+{   //Guard when out of bounds of the maze vector. 
     if (((idxCell) < 0) | ((idxCell) > (d_height * d_width)))
     {
-        //cout << "1: REWARD = " << reward << endl;
-        return -10;
+        return -5; //Returning the border reward.
     }   
-    if (step > 5) //to prevent recursion to go too deep, without much effect.
+    if (step > 10) //to prevent recursion to go too deep, without much effect.
         return reward; 
-    float discountRate = 0.3;
+    float discountRate = 0.4; 
     int direction = d_action;
     size_t actionSelection = d_actionSelection;
     size_t idxPlusAction;
     cell currentCell(0, 0, ' ');
     currentCell = mazeGrid.at(idxCell);
-    //cout << "INNER CURRENT CELL = " << endl;
-    //currentCell.print();
     d_maxQ = getMaxQ(currentCell.getQValue());
-    //cout << "d_maxQ = " << d_maxQ << endl;
+    //Bellman Equation
     reward += d_maxQ * pow(discountRate, step);
-    //cout << "step = " << step << "| INNER INDEX = " << idxCell << endl;
     if (currentCell.getBorder() == true)
-    {
-        //cout << "\033[1;31mENCOUNTERED A WALL! \033[m" << endl;
         return reward;
-    }
     if (currentCell.getExit() == true)
     { 
-        //cout << "\033[1;31mFOUND THE EXIT! \033[m" << endl;
-        //reset to the starting node 
+        //Exit found
         d_exit = true;
         return reward;
     }
     actionSelection = selectAction(mazeGrid.at(idxCell).getQValue());      
     direction = action(actionSelection);
     idxPlusAction = idxCell + direction; 
-    //cout << "direction = " << direction << "| idxPlusAction = " << idxPlusAction << endl;
-    if (d_maxQ == 0) // no Q value
-    {
-        //cout << "q = 0" << endl;
-        return reward;
-    }
-    //cout << "\033[1;31mRECURSION \033[m" << endl;
+    //if (d_maxQ == 0) // no Q value from here on, so no need for recursion
+        //return reward;
+    //Recursion to next cell
     return actionValueFunc(mazeGrid, step + 1, reward, idxPlusAction);
 }
 

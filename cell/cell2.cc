@@ -12,27 +12,25 @@ cell::cell(size_t width, size_t height, char character)
     setStart(false);
     setBorder(false);
     setExit(false); 
-    d_count = 0; //if implement, change swap, move and copy
-    d_averageReward = 0;
     if ((d_character == '_') | (d_character == '|'))
     {
         setBorder(true);
-        d_reward = -1; //Walking into walls is punished    
+        setReward(-5); //Walking into walls is punished    
     }
     else if (d_character == 'S') //Starting point
     {
         setStart(true);
-        d_reward =  -0.5;
+        setReward(-1.5);
     }    
     else if (d_character == 'T')
-        d_reward = -1; //Traps are present
+        setReward(-20); //Traps are present
     else if (d_character == 'G')
-        d_reward = 1; //There is gold to be found too
+        setReward(1); //There is gold to be found too
     else if (d_character == 'X')
     {
         setExit(true);
-        d_reward = 5; //The exit of the maze
+        setReward(200); //The exit of the maze
     }
     else if (d_character == 'P')
-        d_reward = -0.5; //making sure unnecessary moves are punished
+        setReward(-1.5); //making sure unnecessary moves are punished
 }

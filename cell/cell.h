@@ -10,14 +10,12 @@ class cell
 {
     size_t d_x;
     size_t d_y;
-    size_t d_count;
     float d_reward;
-    float d_averageReward;
     bool d_start;    
     bool d_border;
     bool d_exit;
     char d_character;
-    float *d_QValue;
+    float* d_QValue;
     public:
         cell();
         cell(size_t width, size_t height, char character);
@@ -29,14 +27,13 @@ class cell
         size_t getWidth() const;
         size_t getHeight() const;
         float getReward() const;
-        float getAverageReward() const;
         bool getStart() const;
         bool getBorder() const;
         bool getExit() const;
         float* getQValue() const;
 
         void setQValue(float* newQValue);
-
+        void setReward(int newReward);
         void print() const;
 
     private:
@@ -45,7 +42,6 @@ class cell
         void setStart(bool status);
         void setBorder(bool status);
         void setExit(bool status);
-        float setAverageReward(int newAverageReward);
 
         void swap(cell &other);
 };

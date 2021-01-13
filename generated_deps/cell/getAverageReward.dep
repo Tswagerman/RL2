@@ -1,6 +1,0 @@
-cell/getAverageReward.o: cell/getAverageReward.cc cell/cell.ih \
- cell/cell.h
-
-cell/cell.ih:
-
-cell/cell.h:

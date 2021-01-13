@@ -4,37 +4,9 @@
 #include "mazesolver/mazesolver.ih"
 #include <vector>
 using namespace std;
-
-void print(std::vector<cell> const &input, size_t size)
-{
-    for (size_t i = 0; i < size; i++) {
-        input.at(i).print();
-    }
-}
-
-void makeGrid(std::vector<cell>& mazeGrid, size_t widthMaze, size_t heightMaze, const char** maze)
-{
-    //looping through the entire maze, filling the grid
-    for (size_t height = 0; height < heightMaze; ++height)
-    {
-        for (size_t width = 0; width < widthMaze; ++width)
-        {
-            const char* character = maze[height];     
-            cell currentCell(width, height, character[width]);   
-            mazeGrid.push_back(currentCell);                  
-        }
-    }
-}
-
-size_t getStartPos(std::vector<cell> mazeGrid, size_t size)
-{
-    for (size_t increment = 0; increment < size; ++increment)
-    {
-        if (mazeGrid.at(increment).getStart() == true)
-            return increment;
-    }
-    return 0;
-}
+void print(std::vector<cell> const &input, size_t size);
+void makeGrid(std::vector<cell>& mazeGrid, size_t widthMaze, size_t heightMaze, const char** maze);
+size_t getStartPos(std::vector<cell> mazeGrid, size_t size);
 
 int main()
 {
@@ -77,18 +49,18 @@ const char* maze[18] = {
         "|S|PPPPP|PP|",
         "|P|PP|PP|PP|",
         "|P|PP|P_|PP|",
-        "|P _P|PPP|P|",
-        "|P|PP|P|P|P|",
-        "|P|__|P|P|P|",
+        "|P _PPPPP|P|",
+        "|P|PPP|P|PP|",
+        "|P|P_|PPP|P|",
         "|P|PP|P P|P|",
-        "|P|P___|P|P|",
-        "|P|PPPP|P|P|",
-        "|PPPPPPPP|P|",
+        "|PPP___|P|P|",
+        "|_PPPPP|P|P|",
+        "|P|PPPPPP|P|",
         "|P|__|_|P|P|",
         "|P|PP|P|P|P|",
-        "|P|PPPP|_|P|",
-        "|P|PP|P|PPP|",
-        "|P|PP|P|PPP|",
+        "|P|PPPP|P|P|",
+        "|P|PP|PPPPP|",
+        "|PPPP|P|PPP|",
         "|P|__|_|PPP|",
         "|X_________|",
     };
@@ -100,4 +72,35 @@ const char* maze[18] = {
     size_t start = getStartPos(mazeGrid, sizeMaze);
     mazeSolver solution(mazeGrid, widthMaze, heightMaze, start); 
     //print(mazeGrid, sizeMaze);
+}
+
+void print(std::vector<cell> const &input, size_t size)
+{
+    for (size_t i = 0; i < size; i++) {
+        input.at(i).print();
+    }
+}
+
+void makeGrid(std::vector<cell>& mazeGrid, size_t widthMaze, size_t heightMaze, const char** maze)
+{
+    //looping through the entire maze, filling the grid
+    for (size_t height = 0; height < heightMaze; ++height)
+    {
+        for (size_t width = 0; width < widthMaze; ++width)
+        {
+            const char* character = maze[height];     
+            cell currentCell(width, height, character[width]);   
+            mazeGrid.push_back(currentCell);                  
+        }
+    }
+}
+
+size_t getStartPos(std::vector<cell> mazeGrid, size_t size)
+{
+    for (size_t increment = 0; increment < size; ++increment)
+    {
+        if (mazeGrid.at(increment).getStart() == true)
+            return increment;
+    }
+    return 0;
 }
