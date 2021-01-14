@@ -1,0 +1,11 @@
+mazesolver/setMazeQToZero.o: mazesolver/setMazeQToZero.cc \
+ mazesolver/mazesolver.ih mazesolver/mazesolver.h \
+ mazesolver/../cell/cell.ih mazesolver/../cell/cell.h
+
+mazesolver/mazesolver.ih:
+
+mazesolver/mazesolver.h:
+
+mazesolver/../cell/cell.ih:
+
+mazesolver/../cell/cell.h:

@@ -26,11 +26,11 @@ cell::cell(size_t width, size_t height, char character)
     else if (getCharacter() == 'T')
         setReward(-20); //Traps are present
     else if (getCharacter() == 'G')
-        setReward(3000); //There is gold to be found too
+        setReward(100); //There is gold to be found too
     else if (getCharacter() == 'X')
     {
         setExit(true);
-        setReward(200); //The exit of the maze
+        setReward(50); //The exit of the maze
     }
     else if (getCharacter() == 'P')
         setReward(-1.5); //making sure unnecessary moves are punished

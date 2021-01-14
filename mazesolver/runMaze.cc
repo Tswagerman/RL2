@@ -12,8 +12,10 @@ void print1(std::vector<cell> const &input, size_t size)
 void mazeSolver::runMaze(vector<cell> &mazeGrid)
 {
     d_currentCell = mazeGrid.at(d_start);
-    mazeGrid.at(d_idxCell).print();
+    
+    mazeGrid = setMazeQToZero(mazeGrid);
     cout << "loop" << endl;
+    mazeGrid.at(d_idxCell).print();
     //ACTIONSELECTIONS defined in 'mazesolver.h'
     for (d_steps = 0; (d_steps < ACTIONSELECTIONS); ++d_steps)
     {        
@@ -53,16 +55,8 @@ void mazeSolver::runMaze(vector<cell> &mazeGrid)
         }
         if ((d_exit == true) & (nextCell.getExit() == false))
             d_exit = false;
-        /*else if ((nextCell.getBorder() == true) & (getMaxQ(d_currentCell.getQValue()) != 0) & (d_sAction.empty() == false))
-        {  
-            d_action = d_sAction.top();
-            d_idxCell -= d_action;
-            d_sAction.pop();
-            cell previousCell(0, 0, ' ');
-            previousCell = mazeGrid.at(d_idxCell);
-            d_currentCell = previousCell;
-        }*/ 
-        //print1(mazeGrid, 12*11);
+        if (d_steps == (ACTIONSELECTIONS - 1))
+            d_idxCell = d_start;
     }
     cout << "d_countSolves = " << d_countSolves << endl;
     //Reset to the starting node. DOES NOT RESET QVALUES TO 0

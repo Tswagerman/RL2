@@ -2,7 +2,7 @@
 #define INCLUDED_MAZESOLVER_
 #include "../cell/cell.ih"
 
-#define ACTIONSELECTIONS 10000
+#define ACTIONSELECTIONS 4000
 
 class mazeSolver
 {
@@ -20,6 +20,7 @@ class mazeSolver
     float d_maxQ;
     float *m_QValue;
     float *d_maxCurrentQValue;
+    float *d_averageMaxCurrentQValue;
     bool d_exit;
     cell d_currentCell;
     std::stack <int> d_sAction;
@@ -36,6 +37,8 @@ class mazeSolver
         size_t selectAction(float* QValue);
         float getMaxQ(float* input) const;
         void reset(std::vector<cell> &mazeGrid);
+        void fillAverageQValue(float* Qarray);
+        std::vector<cell> setMazeQToZero(std::vector<cell> &mazeGrid);
 };
         
 #endif

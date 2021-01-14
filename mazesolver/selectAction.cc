@@ -19,12 +19,12 @@ size_t mazeSolver::selectAction(float* QValue)
             action = idx;
         }
     //Exploration. Only explore for the first few solutions.
-	if ((epsilon >= p) & (d_countSolves < 10))
+	/*if ((epsilon >= p) & (d_countSolves < 10))
     {
         uniform_int_distribution<int> uniformDist(0, SIZE - 1); 
         int random = uniformDist(gen);
 		return random;
-	}
+	}*/
     return action;
 }
     
