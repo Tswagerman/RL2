@@ -12,6 +12,7 @@ cell::cell(cell&& tmp)
     d_exit = tmp.d_exit;
     d_start = tmp.d_start;
     d_character = tmp.d_character;
+    d_QValue = tmp.d_QValue;
     tmp.d_x = 0;
     tmp.d_y = 0;
     tmp.d_reward = 0;

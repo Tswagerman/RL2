@@ -23,10 +23,9 @@ mazeSolver::mazeSolver(vector<cell> &mazeGrid, size_t widthMaze, size_t heightMa
     d_steps = 0;
     d_exit = false;
     d_countSolves = 0;
-    for (d_runs = 0; d_runs < 10; ++d_runs)
+    for (d_runs = 0; d_runs < 5; ++d_runs)
     {       
         runMaze(mazeGrid);
-        cout << "d_maxCurrentQValue" << endl;
         fillAverageQValue(d_maxCurrentQValue);
         memset(d_maxCurrentQValue, 0, sizeof(float) * ACTIONSELECTIONS);
     }

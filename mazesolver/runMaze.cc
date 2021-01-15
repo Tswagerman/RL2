@@ -40,11 +40,9 @@ void mazeSolver::runMaze(vector<cell> &mazeGrid)
         if ((nextCell.getBorder() == false) & (d_maxQ != 0))               
         {     
             d_sAction.push(d_action);     
-            d_sQValue.push(d_maxQ);
-                      
+            d_sQValue.push(d_maxQ);   
             d_idxCell += d_action;
             d_currentCell = nextCell; 
-            
         } 
         if ((d_exit == true) & (nextCell.getExit() == true))
         {
@@ -60,6 +58,5 @@ void mazeSolver::runMaze(vector<cell> &mazeGrid)
     }
     cout << "d_countSolves = " << d_countSolves << endl;
     //Reset to the starting node. DOES NOT RESET QVALUES TO 0
-    //reset(mazeGrid);
     d_countSolves = 0; 
 }

@@ -29,8 +29,6 @@ float mazeSolver::actionValueFunc(std::vector<cell> &mazeGrid, int step, float r
     actionSelection = selectAction(mazeGrid.at(idxCell).getQValue());      
     direction = action(actionSelection);
     idxPlusAction = idxCell + direction; 
-    //if (d_maxQ == 0) // no Q value from here on, so no need for recursion
-        //return reward;
     //Recursion to next cell
     return actionValueFunc(mazeGrid, step + 1, reward, idxPlusAction);
 }
