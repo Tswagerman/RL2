@@ -7,7 +7,7 @@ float mazeSolver::actionValueFunc(std::vector<cell> &mazeGrid, int step, float r
     {
         return -5; //Returning the border reward.
     }   
-    if (step > 10) //to prevent recursion to go too deep, without much effect.
+    if (step > 5) //to prevent recursion to go too deep, without much effect.
         return reward; 
     float discountRate = 0.4; 
     int direction = d_action;
@@ -27,7 +27,7 @@ float mazeSolver::actionValueFunc(std::vector<cell> &mazeGrid, int step, float r
         return reward;
     }
     actionSelection = selectAction(mazeGrid.at(idxCell).getQValue());      
-    direction = action(actionSelection);
+    direction = action(actionSelection); //RC could be implemented here
     idxPlusAction = idxCell + direction; 
     //Recursion to next cell
     return actionValueFunc(mazeGrid, step + 1, reward, idxPlusAction);

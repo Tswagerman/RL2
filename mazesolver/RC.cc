@@ -1,4 +1,4 @@
-//#define XERR
+/*//#define XERR
 #include "mazeSolver.ih"
 
 void mazeSolver::softMax()
@@ -31,4 +31,4 @@ size_t mazeSolver::RC(float* QValue)
     d_averageRewardRun += alpha * diff;
     softMax();
     return highestValue;
-}
+}*/

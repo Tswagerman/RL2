@@ -39,6 +39,7 @@ class mazeSolver
         void reset(std::vector<cell> &mazeGrid);
         void fillAverageQValue(float* Qarray);
         std::vector<cell> setMazeQToZero(std::vector<cell> &mazeGrid);
+        void softMax();
 };
         
 #endif

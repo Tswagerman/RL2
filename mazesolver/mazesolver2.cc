@@ -23,7 +23,7 @@ mazeSolver::mazeSolver(vector<cell> &mazeGrid, size_t widthMaze, size_t heightMa
     d_steps = 0;
     d_exit = false;
     d_countSolves = 0;
-    for (d_runs = 0; d_runs < 5; ++d_runs)
+    for (d_runs = 0; d_runs < 1; ++d_runs)
     {       
         runMaze(mazeGrid);
         fillAverageQValue(d_maxCurrentQValue);

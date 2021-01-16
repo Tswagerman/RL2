@@ -12,7 +12,7 @@ int main()
 {
        /* const char* maze[18] = {
         "___________",
-        "|S|PPPPP|P|",
+        "|X|PPPPP|P|",
         "|P|PP|PP|P|",
         "|PPPP|P_|P|",
         "|P _P|PPPP|",
@@ -20,7 +20,7 @@ int main()
         "|P|__|P|P |",
         "|P|PP|P PP|",
         "|P|P___|PP|",
-        "|PPPPPP|PP|",
+        "|SPPPPP|PP|",
         "|PPPPPPPPP|",
         "|P|PP|P|PP|",
         "|P|PP|P|PP|",
@@ -28,7 +28,7 @@ int main()
         "|P|PP|P|PP|",
         "|P|PP|P|PP|",
         "|P|PP|P|PP|",
-        "|X________|",
+        "|P________|",
     };*/
 /*const char* maze[12] = {
         "___________",
@@ -50,7 +50,7 @@ const char* maze[18] = {
         "|P|PP|PP|PP|",
         "|P|PP|P_|PP|",
         "|P _PPPPP|P|",
-        "|P|PPP|P|PP|",
+        "|X|PPP|P|PP|",
         "|P|P_|PPP|P|",
         "|P|PP|P P|P|",
         "|PPP___|P|P|",
