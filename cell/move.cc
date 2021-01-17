@@ -11,6 +11,7 @@ cell::cell(cell&& tmp)
     d_border = tmp.d_border;
     d_exit = tmp.d_exit;
     d_start = tmp.d_start;
+    d_V = tmp.d_V;
     d_character = tmp.d_character;
     d_QValue = tmp.d_QValue;
     tmp.d_x = 0;
@@ -19,6 +20,7 @@ cell::cell(cell&& tmp)
     tmp.d_character = 0;
     tmp.d_border = NULL;
     tmp.d_start = NULL;
+    tmp.d_V = 0;
     tmp.d_exit = NULL;
     tmp.d_QValue = nullptr;
 }

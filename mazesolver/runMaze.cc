@@ -7,34 +7,42 @@ void mazeSolver::runMaze(vector<cell> &mazeGrid)
     d_currentCell = mazeGrid.at(d_start);
     //Resetting all the learned Q values to 0.
     mazeGrid = setMazeQToZero(mazeGrid);
-    for (d_steps = 0; (d_steps < ACTIONSELECTIONS); ++d_steps)
+    for (d_steps = 0; (d_steps < 10); ++d_steps)
     {                
         //m_QValue is used to keep track of the current Q value        
         m_QValue = d_currentCell.getQValue();  
-        cout << "\033[1;34mRUN\033[0m" << d_runs << "\033[1;31m| STEP :\033[0m" 
+        cout << "\033[1;31mRUN\033[0m" << d_runs << "\033[1;31m| STEP :\033[0m" 
             << d_steps << endl;
         cout << "FIRST OF LOOP" << endl;        
         d_currentCell.print();
+        m_V = valueFunc(mazeGrid, 0, 0.0, d_idxCell);
+        d_currentCell.setV(m_V);
+        cout << "AFTER VALUE FUNC" << endl;   
+        d_currentCell.print();                 
+        mazeGrid.at(d_idxCell) = d_currentCell;
+        d_currentCell.print();
+        //Creating a copy of the next cell
+        cell nextCell(0, 0, ' ');
         for (size_t idx = 0; idx < SIZE; ++idx)
-        {
-            d_actionSelection = idx;      
-            d_action = action(d_actionSelection);
+        {     
+            d_action = action(idx);
             //Recursion to next cell
-            m_QValue[d_actionSelection] = valueFunc(mazeGrid, 1, 0.0, d_idxCell + d_action); 
+            nextCell = mazeGrid.at(d_idxCell + d_action);
+            m_QValue[idx] = nextCell.getV();
         }     
         //UPDATE THE CURRENT CELL'S QVALUE AND MAZEGRID               
         d_currentCell.setQValue(m_QValue);    
         cout << "AFTER VALUE FUNC" << endl;   
         d_currentCell.print();                 
         mazeGrid.at(d_idxCell) = d_currentCell;
+        d_currentCell.print();
         //Selecting direction
         d_actionSelection = selectAction(m_QValue);  
         //Corresponding change in position in accordance with direction   
         d_action = action(d_actionSelection);
         cout << "\033[1;34mACTIONSELECTION = \033[0m" << d_actionSelection << endl
             << "\033[1;34m| DIRECTION = \033[0m" << d_action << endl; 
-        //Creating a copy of the next cell 
-        cell nextCell(0, 0, ' ');
+ 
         nextCell = mazeGrid.at(d_idxCell + d_action);
         cout << "\033[1;31mNEXTCELL = \033[0m" << endl;
         nextCell.print();  
