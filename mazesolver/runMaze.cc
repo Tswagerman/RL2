@@ -18,7 +18,8 @@ void mazeSolver::runMaze(vector<cell> &mazeGrid)
         //Creating a copy of the next cell 
         cell nextCell(0, 0, ' ');
         nextCell = mazeGrid.at(d_idxCell + d_action);       
-        m_QValue[d_actionSelection] = nextCell.getReward() + actionValueFunc(mazeGrid, 1, 0.0, d_idxCell + d_action);
+        m_QValue[d_actionSelection] = nextCell.getReward() + 
+            actionValueFunc(mazeGrid, 1, 0.0, d_idxCell + d_action);
         //UPDATE THE CURRENT CELL'S QVALUE AND MAZEGRID               
         d_currentCell.setQValue(m_QValue);                         
         mazeGrid.at(d_idxCell) = d_currentCell;
