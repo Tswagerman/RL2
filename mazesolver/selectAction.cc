@@ -8,7 +8,6 @@ size_t mazeSolver::selectAction(float* QValue)
     mt19937 gen(rd());
     double epsilon = 0.015;
     double p = (double)rand()/(double)(RAND_MAX/1);
-	
     size_t action = 0;
     float max = QValue[0];
     //cout << "RANDOM ACTION SELECTED: " << d_actionSelection << endl;

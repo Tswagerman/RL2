@@ -28,14 +28,14 @@ void mazeSolver::reset(std::vector<cell> &mazeGrid)
     d_exit = false;
     d_idxCell = d_start;
     d_currentCell = mazeGrid.at(d_idxCell);
-    float maxQ = 0;
-    //while (d_sAction.empty() != true) both stacks are equally big           
+    //float maxQ = 0;
+    //while (d_sAction.empty() != true) both stacks are equal in size          
          
-    while (d_sQValue.empty() != true) //both stacks are equally big
-    {
-        d_sAction.pop();        
-        maxQ += d_sQValue.top();             
-        d_sQValue.pop();    
-    }
+    //while (d_sQValue.empty() != true) //both stacks are equal in size  
+    //{
+    //    d_sAction.pop();        
+        //maxQ += d_sQValue.top();             
+    //    d_sQValue.pop();    
+    //}
     //cout << "MAXQ VALUE = " << maxQ << endl;
 }

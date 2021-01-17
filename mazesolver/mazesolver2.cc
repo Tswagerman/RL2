@@ -3,8 +3,6 @@
 
 void print(float* Qarray);
 
-void fillAverageQValue(float* Qarray);
-
 mazeSolver::mazeSolver(vector<cell> &mazeGrid, size_t widthMaze, size_t heightMaze, size_t start)
   : d_height(heightMaze),
     d_width(widthMaze),
@@ -15,7 +13,8 @@ mazeSolver::mazeSolver(vector<cell> &mazeGrid, size_t widthMaze, size_t heightMa
     d_x = d_currentCell.getWidth();
     d_y = d_currentCell.getHeight();
     m_QValue = new float[SIZE]; //SIZE defined in cell.h
-    d_maxCurrentQValue = new float[ACTIONSELECTIONS];
+    //ACTIONSELECTIONS defined in 'mazesolver.h'
+    d_maxCurrentQValue = new float[ACTIONSELECTIONS]; 
     d_averageMaxCurrentQValue = new float[ACTIONSELECTIONS];
     //memset can be used to set array to 0    
     memset(d_maxCurrentQValue, 0, sizeof(float) * ACTIONSELECTIONS); 
@@ -26,9 +25,12 @@ mazeSolver::mazeSolver(vector<cell> &mazeGrid, size_t widthMaze, size_t heightMa
     for (d_runs = 0; d_runs < 5; ++d_runs)
     {       
         runMaze(mazeGrid);
+        //Calculating the average max q value over the current amount of runs.
         fillAverageQValue(d_maxCurrentQValue);
+        //Reset the array that stores the max Q-value.
         memset(d_maxCurrentQValue, 0, sizeof(float) * ACTIONSELECTIONS);
     }
+    //Printing the result from 'fillAverageQValue'
     print(d_averageMaxCurrentQValue);
 }
 
@@ -38,9 +40,7 @@ void print(float* Qarray)
     ofstream txtOut;
     txtOut.open ("output.txt");
     for(int count = 0; count < ACTIONSELECTIONS; count ++)
-    {
         txtOut << Qarray[count] << ", " ;//need to sum all q values 
-    }
 }
 
 

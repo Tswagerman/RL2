@@ -7,6 +7,7 @@ cell::cell(size_t width, size_t height, char character)
     d_character(character)
 {
     //cout << "Cell Created!" << endl;
+    //SIZE defined in cell.h
     d_QValue = new float[SIZE]; //Default q values for four directions
     
     memset(d_QValue, 0, sizeof(float) * SIZE); //memset can be used to set array to 0   

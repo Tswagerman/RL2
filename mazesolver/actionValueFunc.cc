@@ -4,15 +4,12 @@
 float mazeSolver::actionValueFunc(std::vector<cell> &mazeGrid, int step, float reward, size_t idxCell)
 {   //Guard when out of bounds of the maze vector. 
     if (((idxCell) < 0) | ((idxCell) > (d_height * d_width)))
-    {
-        return -5; //Returning the border reward.
-    }   
+        return -5; //Returning the border reward. 
     if (step > 10) //to prevent recursion to go too deep, without much effect.
         return reward; 
     float discountRate = 0.4; 
     int direction = d_action;
-    size_t actionSelection = d_actionSelection;
-    size_t idxPlusAction;
+    size_t idxPlusAction, actionSelection = d_actionSelection;
     cell currentCell(0, 0, ' ');
     currentCell = mazeGrid.at(idxCell);
     d_maxQ = getMaxQ(currentCell.getQValue());
