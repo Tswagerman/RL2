@@ -11,18 +11,33 @@ void mazeSolver::runMaze(vector<cell> &mazeGrid)
     {                
         //m_QValue is used to keep track of the current Q value        
         m_QValue = d_currentCell.getQValue();  
+        cout << "\033[1;34mRUN\033[0m" << d_runs << "\033[1;31m| STEP :\033[0m" 
+            << d_steps << endl;
+        cout << "FIRST OF LOOP" << endl;        
+        d_currentCell.print();
+        for (size_t idx = 0; idx < SIZE; ++idx)
+        {
+            d_actionSelection = idx;      
+            d_action = action(d_actionSelection);
+            //Recursion to next cell
+            m_QValue[d_actionSelection] = valueFunc(mazeGrid, 1, 0.0, d_idxCell + d_action); 
+        }     
+        //UPDATE THE CURRENT CELL'S QVALUE AND MAZEGRID               
+        d_currentCell.setQValue(m_QValue);    
+        cout << "AFTER VALUE FUNC" << endl;   
+        d_currentCell.print();                 
+        mazeGrid.at(d_idxCell) = d_currentCell;
         //Selecting direction
         d_actionSelection = selectAction(m_QValue);  
         //Corresponding change in position in accordance with direction   
         d_action = action(d_actionSelection);
+        cout << "\033[1;34mACTIONSELECTION = \033[0m" << d_actionSelection << endl
+            << "\033[1;34m| DIRECTION = \033[0m" << d_action << endl; 
         //Creating a copy of the next cell 
         cell nextCell(0, 0, ' ');
-        nextCell = mazeGrid.at(d_idxCell + d_action);       
-        m_QValue[d_actionSelection] = nextCell.getReward() + 
-            actionValueFunc(mazeGrid, 1, 0.0, d_idxCell + d_action);
-        //UPDATE THE CURRENT CELL'S QVALUE AND MAZEGRID               
-        d_currentCell.setQValue(m_QValue);                         
-        mazeGrid.at(d_idxCell) = d_currentCell;
+        nextCell = mazeGrid.at(d_idxCell + d_action);
+        cout << "\033[1;31mNEXTCELL = \033[0m" << endl;
+        nextCell.print();  
         //Calculating the current maximum Q-value
         d_maxQ = getMaxQ(d_currentCell.getQValue());           
         //To visualize the max Q value over the run.        
@@ -32,7 +47,7 @@ void mazeSolver::runMaze(vector<cell> &mazeGrid)
             d_maxCurrentQValue[d_steps] = d_maxQ;
         //Checking whether the next cell is a border and 
         //whether the direct neighbors of currentCell have been explored completely
-        if ((nextCell.getBorder() == false) & (d_maxQ != 0))               
+        if ((nextCell.getBorder() == false))               
         {     
             d_sAction.push(d_action);     
             d_sQValue.push(d_maxQ);   
