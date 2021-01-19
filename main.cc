@@ -49,7 +49,7 @@ const char* maze[18] = {
         "|S|PPPPP|PP|",
         "|P|PP|PP|PP|",
         "|P|PP|P_|PP|",
-        "|P _PPPPP|P|",
+        "|P|_PPPPP|P|",
         "|P|PPP|P|PP|",
         "|P|P_|PPP|P|",
         "|P|PP|P P|P|",

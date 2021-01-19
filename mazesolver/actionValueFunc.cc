@@ -29,5 +29,3 @@ float mazeSolver::actionValueFunc(std::vector<cell> &mazeGrid, int step, float r
     //Recursion to next cell
     return actionValueFunc(mazeGrid, step + 1, reward, idxPlusAction);
 }
-
-
