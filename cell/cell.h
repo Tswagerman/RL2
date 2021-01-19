@@ -46,7 +46,7 @@ class cell
         void setStart(bool status);
         void setBorder(bool status);
         void setExit(bool status);
-        void setReward(int newReward);
+        void setReward(float newReward);
         void setCharacter(char newCharacter);
         
         void swap(cell &other);

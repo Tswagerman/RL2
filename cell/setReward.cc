@@ -1,7 +1,7 @@
 //#define XERR
 #include "cell.ih"
 
-void cell::setReward(int newReward)
+void cell::setReward(float newReward)
 {
     d_reward = newReward;
 }
