@@ -9,6 +9,9 @@ void mazeSolver::printPolicy(std::vector<cell> &mazeGrid)
         for (size_t width = 0; width < d_width; ++width)
         {
             position = (height * d_width) + width; 
+            /*if (height == 5 and width == 1)
+                mazeGrid.at(position).print();
+*/
             if (mazeGrid.at(position).getBorder() == true)
                 cout << 'B'; 
             else if (mazeGrid.at(position).getExit() == true)
@@ -16,7 +19,7 @@ void mazeSolver::printPolicy(std::vector<cell> &mazeGrid)
             else
             {
                 //mazeGrid.at(position).print();
-                direction = selectAction(mazeGrid.at(position).getQValue());
+                direction = getOpt(mazeGrid.at(position).getQValue());
                 switch(direction)
                 {
                 case(0):
