@@ -18,8 +18,9 @@ void mazeSolver::runMaze(vector<cell> &mazeGrid)
         //Creating a copy of the next cell 
         cell nextCell(0, 0, ' ');
         nextCell = mazeGrid.at(d_idxCell + d_action);       
-        m_QValue[d_actionSelection] = nextCell.getReward() + 
-            actionValueFunc(mazeGrid, 1, 0.0, d_idxCell + d_action);
+        m_QValue[d_actionSelection] = m_QValue[d_actionSelection] + 
+            0.9 * ((nextCell.getReward()) + 0.6 * getMaxQ(nextCell.getQValue()) 
+            - m_QValue[d_actionSelection]);
         //UPDATE THE CURRENT CELL'S QVALUE AND MAZEGRID               
         d_currentCell.setQValue(m_QValue);                         
         mazeGrid.at(d_idxCell) = d_currentCell;
@@ -40,7 +41,7 @@ void mazeSolver::runMaze(vector<cell> &mazeGrid)
             d_currentCell = nextCell; 
         } 
         //FOUND THE EXIT
-        if ((d_exit == true) & (nextCell.getExit() == true))
+        if (d_currentCell.getExit() == true)
         {
             //Reset the current node to the starting node.
             reset(mazeGrid);
