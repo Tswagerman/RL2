@@ -38,6 +38,7 @@ class mazeSolver
         float getMaxQ(float* input) const;
         void reset(std::vector<cell> &mazeGrid);
         void fillAverageQValue(float* Qarray);
+        void printPolicy(std::vector<cell> &input);
         std::vector<cell> setMazeQToZero(std::vector<cell> &mazeGrid);
 };
         

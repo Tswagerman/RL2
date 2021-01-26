@@ -30,8 +30,12 @@ mazeSolver::mazeSolver(vector<cell> &mazeGrid, size_t widthMaze, size_t heightMa
         //Reset the array that stores the max Q-value.
         memset(d_maxCurrentQValue, 0, sizeof(float) * ACTIONSELECTIONS);
     }
+    cout << "Begin" << endl;
+    printPolicy(mazeGrid);
+    cout << "DONE" <<endl;
     //Printing the result from 'fillAverageQValue'
     print(d_averageMaxCurrentQValue);
+    
 }
 
 

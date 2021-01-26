@@ -76,9 +76,8 @@ const char* maze[18] = {
 
 void print(std::vector<cell> const &input, size_t size)
 {
-    for (size_t i = 0; i < size; i++) {
+    for (size_t i = 0; i < size; i++) 
         input.at(i).print();
-    }
 }
 
 void makeGrid(std::vector<cell>& mazeGrid, size_t widthMaze, size_t heightMaze, const char** maze)
