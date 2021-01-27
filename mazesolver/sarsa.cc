@@ -7,9 +7,9 @@ void mazeSolver::sarsa()
     size_t actionSelection = selectAction(d_sarsa);  
     //Corresponding change in position in accordance with direction   
     float Qnext = d_sarsa[actionSelection];
-    float alpha = 0.15;
-    float discountRate = 0.9;
-    m_QValue[d_actionSelection] = m_QValue[d_actionSelection] + 
-        alpha * ((d_nextCell.getReward()) + pow(discountRate, d_stepEpoch) * 
-            Qnext - m_QValue[d_actionSelection]);
+    float alpha = 0.99; //0.95
+    float discountRate = 0.78; //0.65
+    float predict = m_QValue[d_actionSelection];
+    float target = d_nextCell.getReward() + discountRate * Qnext;
+    m_QValue[d_actionSelection] = m_QValue[d_actionSelection] + alpha * (target - predict);
 }

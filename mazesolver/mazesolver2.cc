@@ -25,9 +25,9 @@ mazeSolver::mazeSolver(vector<cell> &mazeGrid, size_t widthMaze, size_t heightMa
     d_exit = false;
     d_countSolves = 0;
     d_stepEpoch = 0;
-    d_p = 0.9;
-    d_Alpha = 0.5;
-    d_Beta = 0.65;
+    d_p = 0.1;
+    d_Alpha = 0.36;
+    d_Beta = 0.36;
     for (d_runs = 0; d_runs < 5; ++d_runs)
     {       
         runMaze(mazeGrid);
