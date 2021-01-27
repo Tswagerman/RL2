@@ -1,0 +1,11 @@
+mazesolver/sarsa.o: mazesolver/sarsa.cc mazesolver/mazesolver.ih \
+ mazesolver/mazesolver.h mazesolver/../cell/cell.ih \
+ mazesolver/../cell/cell.h
+
+mazesolver/mazesolver.ih:
+
+mazesolver/mazesolver.h:
+
+mazesolver/../cell/cell.ih:
+
+mazesolver/../cell/cell.h:

@@ -16,11 +16,16 @@ void mazeSolver::runMaze(vector<cell> &mazeGrid)
         //Corresponding change in position in accordance with direction   
         d_action = action(d_actionSelection);
         //Creating a copy of the next cell 
-        cell nextCell(0, 0, ' ');
-        nextCell = mazeGrid.at(d_idxCell + d_action);       
-        m_QValue[d_actionSelection] = m_QValue[d_actionSelection] + 
-            0.9 * ((nextCell.getReward()) + 0.6 * getMaxQ(nextCell.getQValue()) 
-            - m_QValue[d_actionSelection]);
+        d_nextCell = mazeGrid.at(d_idxCell + d_action);   
+        if (d_nextCell.getBorder() == true)
+            m_QValue[d_actionSelection] = d_nextCell.getReward();
+        else 
+        {        
+            //qLearning();
+            rLearning();
+            //sarsa();
+        }
+        ++d_stepEpoch;
         //UPDATE THE CURRENT CELL'S QVALUE AND MAZEGRID               
         d_currentCell.setQValue(m_QValue);                         
         mazeGrid.at(d_idxCell) = d_currentCell;
@@ -33,12 +38,10 @@ void mazeSolver::runMaze(vector<cell> &mazeGrid)
             d_maxCurrentQValue[d_steps] = d_maxQ;
         //Checking whether the next cell is a border and 
         //whether the direct neighbors of currentCell have been explored completely
-        if ((nextCell.getBorder() == false) & (d_maxQ != 0))               
-        {     
-            d_sAction.push(d_action);     
-            d_sQValue.push(d_maxQ);   
+        if ((d_nextCell.getBorder() == false))               
+        {       
             d_idxCell += d_action;
-            d_currentCell = nextCell; 
+            d_currentCell = d_nextCell; 
         } 
         //FOUND THE EXIT
         if (d_currentCell.getExit() == true)
@@ -47,9 +50,6 @@ void mazeSolver::runMaze(vector<cell> &mazeGrid)
             reset(mazeGrid);
             ++d_countSolves;
         }
-        //FOUND THE EXIT IN RECURSION
-        if ((d_exit == true) & (nextCell.getExit() == false))
-            d_exit = false;
         //RESET POSITION AT END OF LOOP        
         if (d_steps == (ACTIONSELECTIONS - 1))
             d_idxCell = d_start;

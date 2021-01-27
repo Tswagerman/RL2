@@ -10,9 +10,11 @@ mazeSolver::mazeSolver(vector<cell> &mazeGrid, size_t widthMaze, size_t heightMa
     d_start(start)
 {
     d_currentCell = mazeGrid.at(d_idxCell);
+    d_nextCell = mazeGrid.at(d_idxCell); //Doesn't matter what its initialized as at first
     d_x = d_currentCell.getWidth();
     d_y = d_currentCell.getHeight();
     m_QValue = new float[SIZE]; //SIZE defined in cell.h
+    d_sarsa = new float[SIZE];
     //ACTIONSELECTIONS defined in 'mazesolver.h'
     d_maxCurrentQValue = new float[ACTIONSELECTIONS]; 
     d_averageMaxCurrentQValue = new float[ACTIONSELECTIONS];
@@ -22,6 +24,10 @@ mazeSolver::mazeSolver(vector<cell> &mazeGrid, size_t widthMaze, size_t heightMa
     d_steps = 0;
     d_exit = false;
     d_countSolves = 0;
+    d_stepEpoch = 0;
+    d_p = 0.9;
+    d_Alpha = 0.5;
+    d_Beta = 0.65;
     for (d_runs = 0; d_runs < 5; ++d_runs)
     {       
         runMaze(mazeGrid);

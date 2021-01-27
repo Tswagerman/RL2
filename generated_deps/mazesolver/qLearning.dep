@@ -1,0 +1,11 @@
+mazesolver/qLearning.o: mazesolver/qLearning.cc mazesolver/mazesolver.ih \
+ mazesolver/mazesolver.h mazesolver/../cell/cell.ih \
+ mazesolver/../cell/cell.h
+
+mazesolver/mazesolver.ih:
+
+mazesolver/mazesolver.h:
+
+mazesolver/../cell/cell.ih:
+
+mazesolver/../cell/cell.h:
