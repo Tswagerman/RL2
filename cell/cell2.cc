@@ -14,6 +14,7 @@ cell::cell(size_t width, size_t height, char character)
     setStart(false);
     setBorder(false);
     setExit(false); 
+    setP(0);
     if ((getCharacter() == '_') | (getCharacter() == '|'))
     {
         setBorder(true);
@@ -22,7 +23,7 @@ cell::cell(size_t width, size_t height, char character)
     else if (getCharacter() == 'S') //Starting point
     {
         setStart(true);
-        setReward(-1);
+        setReward(-1.5);
     }    
     else if (getCharacter() == 'X')
     {
@@ -30,5 +31,5 @@ cell::cell(size_t width, size_t height, char character)
         setReward(100); //The exit of the maze
     }
     else if (getCharacter() == 'P')
-        setReward(-1); //making sure unnecessary moves are punished
+        setReward(-1.5); //making sure unnecessary moves are punished
 }

@@ -13,7 +13,7 @@ void mazeSolver::printPolicy(std::vector<cell> &mazeGrid)
                 mazeGrid.at(position).print();
 */
             if (mazeGrid.at(position).getBorder() == true)
-                cout << 'B'; 
+                cout << mazeGrid.at(position).getCharacter(); 
             else if (mazeGrid.at(position).getExit() == true)
                 cout << 'G';
             else

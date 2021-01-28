@@ -1,0 +1,5 @@
+cell/setP.o: cell/setP.cc cell/cell.ih cell/cell.h
+
+cell/cell.ih:
+
+cell/cell.h:

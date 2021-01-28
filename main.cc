@@ -47,15 +47,15 @@ int main()
 const char* maze[18] = {
         "____________",
         "|S|PPPPP|PP|",
-        "|P|PP|PP|PP|",
+        "|PPPP|PP|PP|",
         "|P|PP|P_|PP|",
         "|P|_PPPPP|P|",
         "|P|PPP|P|PP|",
         "|P|P_|PPP|P|",
-        "|P|PP|P P|P|",
+        "|P|PP|PPP|P|",
         "|PPP___|P|P|",
-        "|_PPPPP|P|P|",
-        "|P|PPPPPP|P|",
+        "|PPPPPP|P|P|",
+        "|_|PPPPPP|P|",
         "|P|__|_|P|P|",
         "|P|PP|P|P|P|",
         "|P|PPPP|P|P|",
@@ -67,11 +67,19 @@ const char* maze[18] = {
     size_t widthMaze = 12;
     size_t heightMaze = 18;
     size_t sizeMaze = widthMaze * heightMaze;
+    size_t algorithm = -1;
     std::vector<cell> mazeGrid;
     makeGrid(mazeGrid, widthMaze, heightMaze, maze);
-    size_t start = getStartPos(mazeGrid, sizeMaze);
-    mazeSolver solution(mazeGrid, widthMaze, heightMaze, start); 
-    //print(mazeGrid, sizeMaze);
+    size_t start = getStartPos(mazeGrid, sizeMaze);    
+    cout << "Pick an Algorithm: 0) Q-Learning, 1) r-Learning, 2) Sarsa." << endl
+        << "Provide a number: ";
+    cin >> algorithm;
+    if ((algorithm < 0) | (algorithm > 2))
+    {
+        cout << "Wrong input!" << endl;
+        return -1;
+    }
+    mazeSolver solution(mazeGrid, widthMaze, heightMaze, start, algorithm); 
 }
 
 void print(std::vector<cell> const &input, size_t size)

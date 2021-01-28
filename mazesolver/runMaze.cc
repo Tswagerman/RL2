@@ -17,15 +17,22 @@ void mazeSolver::runMaze(vector<cell> &mazeGrid)
         d_action = action(d_actionSelection);
         //Creating a copy of the next cell 
         d_nextCell = mazeGrid.at(d_idxCell + d_action);   
-        if (d_nextCell.getBorder() == true)
-            m_QValue[d_actionSelection] = d_nextCell.getReward();
-        else 
-        {        
-            //qLearning();
-            rLearning();
-            //sarsa();
-        }
-        ++d_stepEpoch;
+        switch(d_alg)
+        {
+            case 0:
+                qLearning();
+                break;
+            case 1:
+                rLearning();   
+                break;
+            case 2:
+                sarsa();
+                break; 
+            case 3:
+                //doubleQlearning(mazeGrid);
+            default:
+                break;
+        }        
         //UPDATE THE CURRENT CELL'S QVALUE AND MAZEGRID               
         d_currentCell.setQValue(m_QValue);                         
         mazeGrid.at(d_idxCell) = d_currentCell;
@@ -54,7 +61,7 @@ void mazeSolver::runMaze(vector<cell> &mazeGrid)
         if (d_steps == (ACTIONSELECTIONS - 1))
             d_idxCell = d_start;
     }
-    cout << "d_countSolves = " << d_countSolves << endl;
+    cout << "\033[1;31mRun: \033[0m" << d_runs << "| Amount of solutions found = " << d_countSolves << endl;
     d_countSolves = 0; 
 }
 

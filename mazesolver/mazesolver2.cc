@@ -3,8 +3,9 @@
 
 void print(float* Qarray);
 
-mazeSolver::mazeSolver(vector<cell> &mazeGrid, size_t widthMaze, size_t heightMaze, size_t start)
-  : d_height(heightMaze),
+mazeSolver::mazeSolver(vector<cell> &mazeGrid, size_t widthMaze, size_t heightMaze, size_t start, size_t algorithm)
+  : d_alg(algorithm),
+    d_height(heightMaze),
     d_width(widthMaze),
     d_idxCell(start),
     d_start(start)
@@ -14,6 +15,7 @@ mazeSolver::mazeSolver(vector<cell> &mazeGrid, size_t widthMaze, size_t heightMa
     d_x = d_currentCell.getWidth();
     d_y = d_currentCell.getHeight();
     m_QValue = new float[SIZE]; //SIZE defined in cell.h
+    //m_QValueB = new float[SIZE];
     d_sarsa = new float[SIZE];
     //ACTIONSELECTIONS defined in 'mazesolver.h'
     d_maxCurrentQValue = new float[ACTIONSELECTIONS]; 
@@ -24,10 +26,6 @@ mazeSolver::mazeSolver(vector<cell> &mazeGrid, size_t widthMaze, size_t heightMa
     d_steps = 0;
     d_exit = false;
     d_countSolves = 0;
-    d_stepEpoch = 0;
-    d_p = 0.1;
-    d_Alpha = 0.36;
-    d_Beta = 0.36;
     for (d_runs = 0; d_runs < 5; ++d_runs)
     {       
         runMaze(mazeGrid);
@@ -36,7 +34,8 @@ mazeSolver::mazeSolver(vector<cell> &mazeGrid, size_t widthMaze, size_t heightMa
         //Reset the array that stores the max Q-value.
         memset(d_maxCurrentQValue, 0, sizeof(float) * ACTIONSELECTIONS);
     }
-    cout << "Begin" << endl;
+    //cout << "d_p = " << d_p << endl;
+    cout << "Policy map:" << endl;
     printPolicy(mazeGrid);
     cout << "DONE" <<endl;
     //Printing the result from 'fillAverageQValue'

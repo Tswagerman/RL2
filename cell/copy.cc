@@ -12,6 +12,7 @@ cell::cell(const cell& other)
     d_start = other.d_start;
     d_exit = other.d_exit;
     d_character = other.d_character;
+    d_p = other.d_p;
     d_QValue = new float[SIZE];
     memcpy(d_QValue, other.d_QValue, sizeof(float) * SIZE);
 }
